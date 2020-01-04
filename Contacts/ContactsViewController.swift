@@ -27,9 +27,12 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
                 self.persons = persons
             }
         }
-        // setup collection view datasource and delegate
+        // setup profile image collection view
         profileImagecollectionView.delegate = self
         profileImagecollectionView.dataSource = self
+        profileImagecollectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: [.centeredHorizontally])
+        
+        // setup profile information collection view
         profileInformationCollectionView.delegate = self
         profileInformationCollectionView.dataSource = self
         profileInformationCollectionView.allowsSelection = false
@@ -76,7 +79,7 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         profileImagecollectionView.scrollToItem(at: indexPath, at: [.centeredHorizontally], animated: true)
         profileInformationCollectionView.scrollToItem(at: indexPath, at: [.top], animated: true)
-            selectedIndex = indexPath.item
+        selectedIndex = indexPath.item
     }
     
     // Mark: Implement UICollectionViewDelegateFlowLayout
@@ -106,6 +109,31 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 0)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView == profileImagecollectionView {
+            let percentage = profileImagecollectionView.contentOffset.x / profileImagecollectionView.contentSize.width
+            let y = profileInformationCollectionView.contentSize.height * percentage
+            profileInformationCollectionView.contentOffset = CGPoint(x: 0, y: y)
+        }
+        
+        if scrollView == profileInformationCollectionView {
+            
+            let percentage = profileInformationCollectionView.contentOffset.y / profileInformationCollectionView.contentSize.height
+            let x = profileImagecollectionView.contentSize.width * percentage
+            profileImagecollectionView.contentOffset = CGPoint(x: x, y: 0)
+        }
+    }
+}
+
+extension Array where Element == UICollectionViewCell {
+    var middle: UICollectionViewCell? {
+        if isEmpty {
+            return nil
+        } else {
+            return self[count/2]
+        }
     }
 }
 
