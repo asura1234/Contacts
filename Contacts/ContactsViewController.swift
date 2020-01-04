@@ -12,7 +12,6 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
     
     @IBOutlet weak var profileImagecollectionView: UICollectionView!
     
-    
     @IBOutlet weak var profileInformationCollectionView: UICollectionView!
     
     var persons: [ContactPerson] = []
@@ -39,7 +38,6 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     // Mark: Implement UICollectionViewDataSource
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return persons.count
     }
@@ -78,10 +76,9 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
     
     // Mark: Implement UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView == profileImagecollectionView {
-            collectionView.scrollToItem(at: indexPath, at: [.centeredHorizontally], animated: true)
+        profileImagecollectionView.scrollToItem(at: indexPath, at: [.centeredHorizontally], animated: true)
+        profileInformationCollectionView.scrollToItem(at: indexPath, at: [.top], animated: true)
             selectedIndex = indexPath.item
-        }
     }
 }
 
