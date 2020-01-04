@@ -11,7 +11,6 @@ import UIKit
 class ContactsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var profileImagecollectionView: UICollectionView!
-    
     @IBOutlet weak var profileInformationCollectionView: UICollectionView!
     
     var persons: [ContactPerson] = []
@@ -56,8 +55,7 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
             
             if let profileInformationCell = cell as?
                 ProfileInformationCollectionViewCell {
-                profileInformationCell.contentView.frame = profileInformationCollectionView.bounds
-                
+
                 let attributedName = NSMutableAttributedString(string: person.first_name + " " + person.last_name);
                 
                 let boldFont = UIFont.boldSystemFont(ofSize: 24)
@@ -79,6 +77,35 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
         profileImagecollectionView.scrollToItem(at: indexPath, at: [.centeredHorizontally], animated: true)
         profileInformationCollectionView.scrollToItem(at: indexPath, at: [.top], animated: true)
             selectedIndex = indexPath.item
+    }
+    
+    // Mark: Implement UICollectionViewDelegateFlowLayout
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView == profileImagecollectionView {
+            return CGSize(width: 80, height: 80)
+        } else {
+            return collectionView.frame.size
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        if collectionView == profileImagecollectionView {
+            return 10
+        } else {
+            return 0
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        if collectionView == profileImagecollectionView {
+            return 10
+        } else {
+            return 0
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 0)
     }
 }
 
