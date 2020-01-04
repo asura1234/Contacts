@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContactsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class ContactsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     var persons: [ContactPerson] = []
     var selectedIndex: Int = 0
