@@ -32,6 +32,13 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
         profileImagecollectionView.delegate = self
         profileImagecollectionView.dataSource = self
         profileImagecollectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: [.centeredHorizontally])
+        /*profileImagecollectionView.layer.shadowColor = UIColor.gray.cgColor
+        profileImagecollectionView.layer.shadowRadius = 2
+        profileImagecollectionView.layer.shadowOffset = CGSize(width: 0, height: 3)
+        profileImagecollectionView.layer.shadowOpacity = 0.2
+        profileImagecollectionView.layer.shadowPath = UIBezierPath(rect: CGRect(origin: .zero, size: profileImagecollectionView.contentSize)).cgPath
+        profileImagecollectionView.layer.masksToBounds = false*/
+        
         profileImagecollectionView.isPagingEnabled = false
         let profileImageLayout = ProfileImageCollectionLayout()
         profileImageLayout.scrollDirection = .horizontal
@@ -93,15 +100,7 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
     // Mark: Implement UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         profileImagecollectionView.selectItem(at: indexPath, animated: true, scrollPosition: [.centeredHorizontally])
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if scrollView == profileInformationCollectionView || scrollView == profileImagecollectionView {
-            let point = CGPoint(x: profileInformationCollectionView.contentOffset.x, y: profileInformationCollectionView.contentOffset.y + profileInformationCollectionView.frame.height/2)
-            if let indexPath = profileInformationCollectionView.indexPathForItem(at: point) {
-                profileImagecollectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
-            }
-        }
+        selectedIndex = indexPath.item
     }
     
     private lazy var padding = (profileImagecollectionView.frame.size.width - profileImageCellSize)/2
@@ -111,12 +110,37 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
             let y = profileInformationCollectionView.contentSize.height * percentage
             profileInformationCollectionView.contentOffset = CGPoint(x: 0, y: y)
         }
-        
-        if scrollView == profileInformationCollectionView {
+        else if scrollView == profileInformationCollectionView {
             let percentage = profileInformationCollectionView.contentOffset.y / profileInformationCollectionView.contentSize.height
             let x = (profileImagecollectionView.contentSize.width - 2*padding +  20) * percentage
             profileImagecollectionView.contentOffset = CGPoint(x: x, y: 0)
         }
+        
+        if scrollView == profileInformationCollectionView || scrollView == profileImagecollectionView {
+            let point = CGPoint(x: profileInformationCollectionView.contentOffset.x, y: profileInformationCollectionView.contentOffset.y + profileInformationCollectionView.frame.height/2)
+            if let indexPath = profileInformationCollectionView.indexPathForItem(at: point) {
+                profileImagecollectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
+                selectedIndex = indexPath.item
+            }
+            
+            /*UIView.transition(
+                with: profileImagecollectionView,
+                duration: 0.5,
+                options: [.beginFromCurrentState, .curveEaseInOut],
+                animations: {
+                    self.profileImagecollectionView.layer.shadowOpacity = 0.2
+                },
+                completion: { completed in
+                    UIView.transition(with:
+                        self.profileImagecollectionView,
+                        duration: 0.5,
+                        options: [.beginFromCurrentState, .curveEaseInOut],
+                        animations: {
+                            self.profileImagecollectionView.layer.shadowOpacity = 0
+                        }
+                    )
+                }
+            )*/
+        }
     }
 }
-

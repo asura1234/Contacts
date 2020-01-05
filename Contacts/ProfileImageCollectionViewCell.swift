@@ -20,16 +20,6 @@ class ProfileImageCollectionViewCell: UICollectionViewCell {
     @IBInspectable
     var borderAlpha: CGFloat = 0.5
     
-    var showBorder: Bool = false {
-        didSet {
-            if showBorder {
-                self.layer.borderWidth = borderWidth
-            } else {
-                self.layer.borderWidth = 0
-            }
-        }
-    }
-    
     override func awakeFromNib() {
         self.clipsToBounds = true
         self.layer.masksToBounds = false

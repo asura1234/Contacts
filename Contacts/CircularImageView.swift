@@ -10,6 +10,7 @@ import UIKit
 
 class CircularImageView: UIImageView {
 
+    // clip the source image in a cirlce
     override func awakeFromNib() {
         self.clipsToBounds = true
         self.layer.masksToBounds = false
