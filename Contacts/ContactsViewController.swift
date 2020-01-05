@@ -15,6 +15,7 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
     
     var persons: [ContactPerson] = []
     var selectedIndex: Int = 0
+    var profileImageCellSize: CGFloat = 80
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,7 +86,7 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
     // Mark: Implement UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == profileImagecollectionView {
-            return CGSize(width: 80, height: 80)
+            return CGSize(width: profileImageCellSize, height: profileImageCellSize)
         } else {
             return collectionView.frame.size
         }
@@ -107,13 +108,19 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
         }
     }
     
+    private lazy var padding = (profileImagecollectionView.frame.size.width - profileImageCellSize)/2
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 0)
+        if collectionView == profileImagecollectionView {
+        
+            return UIEdgeInsets(top: 0,left: padding ,bottom: 0,right: padding)
+        } else {
+            return UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 0)
+        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == profileImagecollectionView {
-            let percentage = profileImagecollectionView.contentOffset.x / profileImagecollectionView.contentSize.width
+            let percentage = profileImagecollectionView.contentOffset.x / (profileImagecollectionView.contentSize.width - 2*padding + 10)
             let y = profileInformationCollectionView.contentSize.height * percentage
             profileInformationCollectionView.contentOffset = CGPoint(x: 0, y: y)
         }
@@ -121,7 +128,7 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
         if scrollView == profileInformationCollectionView {
             
             let percentage = profileInformationCollectionView.contentOffset.y / profileInformationCollectionView.contentSize.height
-            let x = profileImagecollectionView.contentSize.width * percentage
+            let x = (profileImagecollectionView.contentSize.width - 2*padding + 10) * percentage
             profileImagecollectionView.contentOffset = CGPoint(x: x, y: 0)
         }
     }
