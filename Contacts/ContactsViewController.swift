@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContactsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class ContactsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var profileImagecollectionView: UICollectionView!
     @IBOutlet weak var profileInformationCollectionView: UICollectionView!
@@ -32,12 +32,26 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
         profileImagecollectionView.delegate = self
         profileImagecollectionView.dataSource = self
         profileImagecollectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: [.centeredHorizontally])
+        profileImagecollectionView.isPagingEnabled = false
+        let profileImageLayout = ProfileImageCollectionLayout()
+        profileImageLayout.scrollDirection = .horizontal
+        profileImageLayout.itemSize = CGSize(width: 80, height: 80)
+        profileImageLayout.minimumLineSpacing = 10
+        profileImageLayout.sectionInset = UIEdgeInsets(top: 0,left: padding ,bottom: 0,right: padding)
+        profileImagecollectionView.collectionViewLayout = profileImageLayout
         
         // setup profile information collection view
         profileInformationCollectionView.delegate = self
         profileInformationCollectionView.dataSource = self
         profileInformationCollectionView.allowsSelection = false
         profileInformationCollectionView.isPagingEnabled = true
+        let profileInformationLayout = UICollectionViewFlowLayout()
+        profileInformationLayout.scrollDirection = .vertical
+        profileInformationLayout.itemSize = profileInformationCollectionView.frame.size
+        profileInformationLayout.minimumLineSpacing = 0
+        profileInformationLayout.minimumInteritemSpacing = 0
+        profileInformationLayout.sectionInset = UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 0)
+        profileInformationCollectionView.collectionViewLayout = profileInformationLayout
     }
     
     // Mark: Implement UICollectionViewDataSource
@@ -83,73 +97,26 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
         selectedIndex = indexPath.item
     }
     
-    // Mark: Implement UICollectionViewDelegateFlowLayout
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == profileImagecollectionView {
-            return CGSize(width: profileImageCellSize, height: profileImageCellSize)
-        } else {
-            return collectionView.frame.size
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        if collectionView == profileImagecollectionView {
-            return 10
-        } else {
-            return 0
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        if collectionView == profileImagecollectionView {
-            return 10
-        } else {
-            return 0
-        }
-    }
-    
     private lazy var padding = (profileImagecollectionView.frame.size.width - profileImageCellSize)/2
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        if collectionView == profileImagecollectionView {
-        
-            return UIEdgeInsets(top: 0,left: padding ,bottom: 0,right: padding)
-        } else {
-            return UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 0)
-        }
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if scrollView == profileInformationCollectionView || scrollView == profileImagecollectionView {
-            let point = CGPoint(x: profileInformationCollectionView.contentOffset.x, y: profileInformationCollectionView.contentOffset.y + profileInformationCollectionView.frame.height/2)
-            if let indexPath = profileInformationCollectionView.indexPathForItem(at: point) {
-                profileImagecollectionView.selectItem(at: indexPath, animated: true, scrollPosition: [.centeredHorizontally])
-            }
-        }
-    }
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == profileImagecollectionView {
-            let percentage = profileImagecollectionView.contentOffset.x / (profileImagecollectionView.contentSize.width - 2*padding + 10)
+            let percentage = profileImagecollectionView.contentOffset.x / (profileImagecollectionView.contentSize.width - 2*padding + 20)
             let y = profileInformationCollectionView.contentSize.height * percentage
             profileInformationCollectionView.contentOffset = CGPoint(x: 0, y: y)
         }
         
         if scrollView == profileInformationCollectionView {
-            
             let percentage = profileInformationCollectionView.contentOffset.y / profileInformationCollectionView.contentSize.height
-            let x = (profileImagecollectionView.contentSize.width - 2*padding + 10) * percentage
+            let x = (profileImagecollectionView.contentSize.width - 2*padding +  20) * percentage
             profileImagecollectionView.contentOffset = CGPoint(x: x, y: 0)
+        }
+        
+        if scrollView == profileInformationCollectionView || scrollView == profileImagecollectionView {
+            let point = CGPoint(x: profileInformationCollectionView.contentOffset.x, y: profileInformationCollectionView.contentOffset.y + profileInformationCollectionView.frame.height/2)
+            if let indexPath = profileInformationCollectionView.indexPathForItem(at: point) {
+                profileImagecollectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
+            }
         }
     }
 }
-
-/*extension Array where Element == UICollectionViewCell {
-    var middle: UICollectionViewCell? {
-        if isEmpty {
-            return nil
-        } else {
-            return self[count/2]
-        }
-    }
-}*/
 

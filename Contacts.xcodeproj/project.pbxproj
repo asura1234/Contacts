@@ -99,6 +99,7 @@
 		8AA62CC323C0D9000040E8A5 /* Robin Counts.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AA62C6E23C0D9000040E8A5 /* Robin Counts.png */; };
 		8AA62CC423C0D9000040E8A5 /* Colin Ballinger@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AA62C6F23C0D9000040E8A5 /* Colin Ballinger@3x.png */; };
 		8AA62CC623C0F5E00040E8A5 /* ProfileInformationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA62CC523C0F5E00040E8A5 /* ProfileInformationCollectionViewCell.swift */; };
+		8AA62CCC23C24B300040E8A5 /* ProfileImageCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA62CCB23C24B300040E8A5 /* ProfileImageCollectionLayout.swift */; };
 		8AB2682D23BFA07000D94AE4 /* ContactPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB2682C23BFA07000D94AE4 /* ContactPerson.swift */; };
 		8AB2683123BFAC2200D94AE4 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB2683023BFAC2200D94AE4 /* Resources.swift */; };
 		8AB2683323BFF8B000D94AE4 /* ProfileImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB2683223BFF8B000D94AE4 /* ProfileImageCollectionViewCell.swift */; };
@@ -200,6 +201,7 @@
 		8AA62C6E23C0D9000040E8A5 /* Robin Counts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Robin Counts.png"; sourceTree = "<group>"; };
 		8AA62C6F23C0D9000040E8A5 /* Colin Ballinger@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Colin Ballinger@3x.png"; sourceTree = "<group>"; };
 		8AA62CC523C0F5E00040E8A5 /* ProfileInformationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInformationCollectionViewCell.swift; sourceTree = "<group>"; };
+		8AA62CCB23C24B300040E8A5 /* ProfileImageCollectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageCollectionLayout.swift; sourceTree = "<group>"; };
 		8AB2682C23BFA07000D94AE4 /* ContactPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContactPerson.swift; path = Contacts/ContactPerson.swift; sourceTree = SOURCE_ROOT; };
 		8AB2683023BFAC2200D94AE4 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		8AB2683223BFF8B000D94AE4 /* ProfileImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 		8A34BFEB23BF96B5006B560E /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
+				8AA62CCB23C24B300040E8A5 /* ProfileImageCollectionLayout.swift */,
 				8AB2683223BFF8B000D94AE4 /* ProfileImageCollectionViewCell.swift */,
 				8AC9DCB923C0356800729820 /* CircularImageView.swift */,
 				8A34BFF023BF96B5006B560E /* ContactsViewController.swift */,
@@ -510,6 +513,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AB2683323BFF8B000D94AE4 /* ProfileImageCollectionViewCell.swift in Sources */,
+				8AA62CCC23C24B300040E8A5 /* ProfileImageCollectionLayout.swift in Sources */,
 				8A34BFF123BF96B5006B560E /* ContactsViewController.swift in Sources */,
 				8AC9DCBA23C0356800729820 /* CircularImageView.swift in Sources */,
 				8AA62CC623C0F5E00040E8A5 /* ProfileInformationCollectionViewCell.swift in Sources */,
