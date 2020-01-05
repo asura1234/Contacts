@@ -118,6 +118,15 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
         }
     }
     
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if scrollView == profileInformationCollectionView || scrollView == profileImagecollectionView {
+            let point = CGPoint(x: profileInformationCollectionView.contentOffset.x, y: profileInformationCollectionView.contentOffset.y + profileInformationCollectionView.frame.height/2)
+            if let indexPath = profileInformationCollectionView.indexPathForItem(at: point) {
+                profileImagecollectionView.selectItem(at: indexPath, animated: true, scrollPosition: [.centeredHorizontally])
+            }
+        }
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == profileImagecollectionView {
             let percentage = profileImagecollectionView.contentOffset.x / (profileImagecollectionView.contentSize.width - 2*padding + 10)
@@ -134,7 +143,7 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
     }
 }
 
-extension Array where Element == UICollectionViewCell {
+/*extension Array where Element == UICollectionViewCell {
     var middle: UICollectionViewCell? {
         if isEmpty {
             return nil
@@ -142,5 +151,5 @@ extension Array where Element == UICollectionViewCell {
             return self[count/2]
         }
     }
-}
+}*/
 
