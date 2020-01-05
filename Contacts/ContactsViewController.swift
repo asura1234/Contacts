@@ -92,9 +92,16 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
     
     // Mark: Implement UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        profileImagecollectionView.scrollToItem(at: indexPath, at: [.centeredHorizontally], animated: true)
-        profileInformationCollectionView.scrollToItem(at: indexPath, at: [.top], animated: true)
-        selectedIndex = indexPath.item
+        profileImagecollectionView.selectItem(at: indexPath, animated: true, scrollPosition: [.centeredHorizontally])
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if scrollView == profileInformationCollectionView || scrollView == profileImagecollectionView {
+            let point = CGPoint(x: profileInformationCollectionView.contentOffset.x, y: profileInformationCollectionView.contentOffset.y + profileInformationCollectionView.frame.height/2)
+            if let indexPath = profileInformationCollectionView.indexPathForItem(at: point) {
+                profileImagecollectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
+            }
+        }
     }
     
     private lazy var padding = (profileImagecollectionView.frame.size.width - profileImageCellSize)/2
@@ -109,13 +116,6 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
             let percentage = profileInformationCollectionView.contentOffset.y / profileInformationCollectionView.contentSize.height
             let x = (profileImagecollectionView.contentSize.width - 2*padding +  20) * percentage
             profileImagecollectionView.contentOffset = CGPoint(x: x, y: 0)
-        }
-        
-        if scrollView == profileInformationCollectionView || scrollView == profileImagecollectionView {
-            let point = CGPoint(x: profileInformationCollectionView.contentOffset.x, y: profileInformationCollectionView.contentOffset.y + profileInformationCollectionView.frame.height/2)
-            if let indexPath = profileInformationCollectionView.indexPathForItem(at: point) {
-                profileImagecollectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
-            }
         }
     }
 }
