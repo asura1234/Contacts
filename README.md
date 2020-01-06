@@ -16,7 +16,7 @@ This is a single view app. The main view can be broken into two collection views
 - Animate a shadow showing and hiding during and after scrolling
 
 ## Limitations
-I do not want to overcomplicate the problem. Therefore I've set forth the following limitations for myself so that the challenge can be completed within a reasonable timeframe. 
+I do not wish to overcomplicate the problem. My goal is to replicate the behavior exhibit in [video of the Contacts app](challenge.mov). Therefore I've set forth the following limitations for myself so that the challenge can be completed within a reasonable timeframe. 
 
 - No third party library was used in this project as required by the challenge.
 - The cirlcular profile images are set to a fixed size of 80 px by 80 px instead of dynamically sized.
@@ -24,3 +24,6 @@ I do not want to overcomplicate the problem. Therefore I've set forth the follow
 - Image caching was NOT included in this project. However, I can see it being necessary as the data size grows. In that case, I would use third party library for caching. 
 - The shadow animation is triggered by scrolling either of the top or bottom collectin view. The [video of the Contacts app](challenge.mov) only showed it triggered by scrolling on the bottom collection view.
 - Tests were done on iPhone 8, and iPhone 11, and iPhone 11 plus in the simulator. No test was done on iPad.
+
+## Result 
+
