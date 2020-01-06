@@ -15,21 +15,29 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
     
     var persons: [ContactPerson] = []
     var selectedIndex: Int = 0
-    var profileImageCellSize: CGFloat = 80
+    
+    private let profileImageCellSize: CGFloat = 80
+    private let profileImageCellSpacing: CGFloat = 10
+    private lazy var padding = (profileImagecollectionView.frame.size.width - profileImageCellSize)/2
     
     private let profileImageLayout = ProfileImageCollectionLayout()
     private let profileInformationLayout = UICollectionViewFlowLayout()
     
+    
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         // for the first item and last item in the profile image collection view
-        // to be able to scroll to the center of the collection view
+        // to be able to scroll to the center of the collection view,
         // there needs to be padding added on either side of the content
         profileImageLayout.scrollDirection = .horizontal
-        profileImageLayout.itemSize = CGSize(width: 80, height: 80)
-        profileImageLayout.minimumLineSpacing = 10
+        profileImageLayout.itemSize = CGSize(width: profileImageCellSize, height: profileImageCellSize)
+        profileImageLayout.minimumLineSpacing = profileImageCellSpacing
         profileImageLayout.sectionInset = UIEdgeInsets(top: 0,left: padding ,bottom: 0,right: padding)
-        profileImagecollectionView.layer.shadowPath = UIBezierPath(rect: CGRect(origin: .zero, size: CGSize(width: profileImagecollectionView.contentSize.width, height: profileImagecollectionView.frame.height))).cgPath
+        
+        // TODO: the shadow scrolls with the items inside profile image collection view
+        // so I had to make it really wide ...
+        profileImagecollectionView.layer.shadowPath = UIBezierPath(rect: CGRect(origin: CGPoint(x: -padding, y: 0), size: CGSize(width: profileImagecollectionView.contentSize.width + 2*padding, height: profileImagecollectionView.frame.height))).cgPath
         
         // for paging to work correctly:
         // (1) each item should take up the entire screen space avaialble
@@ -61,7 +69,7 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
         profileImagecollectionView.isPagingEnabled = false
         profileImagecollectionView.collectionViewLayout = profileImageLayout
         
-        // add shadow under the image collection view
+        // setup the shadow under the image collection view
         profileImagecollectionView.layer.shadowColor = UIColor.gray.cgColor
         profileImagecollectionView.layer.shadowRadius = 2
         profileImagecollectionView.layer.shadowOffset = CGSize(width: 0, height: 3)
@@ -101,12 +109,16 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
 
                 let attributedName = NSMutableAttributedString(string: person.first_name + " " + person.last_name);
                 
-                let boldFont = UIFont.boldSystemFont(ofSize: 24)
+                // make sure the custom font scale to the desired size based on acessibility settings
+                let title3Metrics = UIFontMetrics(forTextStyle: .title3)
+                let boldFont = title3Metrics.scaledFont(for: UIFont.boldSystemFont(ofSize: 24))
+                
                 attributedName.addAttribute(.font, value: boldFont, range: NSRange(location: 0, length: person.first_name.count))
                 
-                let thinFont = UIFont(name: "HelveticaNeue-Light", size: 24) ?? UIFont.systemFont(ofSize: 24)
+                 // make sure the custom font scale to the desired size based on acessibility settings
+                let thinFont = title3Metrics.scaledFont(for: UIFont(name: "HelveticaNeue-Light", size: 24) ?? UIFont.systemFont(ofSize: 24))
                 attributedName.addAttribute(.font, value: thinFont, range: NSRange(location: person.first_name.count + 1, length: person.last_name.count))
-
+                
                 profileInformationCell.nameLabel.attributedText = attributedName
                 profileInformationCell.titleLabel.text = person.title
                 profileInformationCell.introductionLabel.text = person.introduction
@@ -143,7 +155,6 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
         })
     }
     
-    private lazy var padding = (profileImagecollectionView.frame.size.width - profileImageCellSize)/2
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         // synchronize scrolling between the two collection views 
