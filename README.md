@@ -15,6 +15,7 @@ This is a single view app. The main view can be broken into two collection views
 - Animate a shadow showing and hiding during and after scrolling
 
 ## Limitations
+- No third party library was used in this project as required by the challenge.
 - The cirlcular profile images are set to a fixed size of 80 px by 80 px instead of dynamically sized.
 - The app is set to portrait only. If I were to add support for landscape mode, I would use an alternative layout to have the profile image collection view on the left hand side of the screen and make it scroll vertically. 
 - Image caching was NOT included in this project. However, I can see it being necessary as the data size grows. In that case, I would use third party library for caching. 
