@@ -27,4 +27,4 @@ I do not wish to overcomplicate the problem. My goal is to replicate the behavio
 
 ## Result 
 Here is a screen recording of the app running in the simulator:
-[Demo Vide](ContactsDemoRecording.mov)
+[Demo Video](ContactsDemoRecording.mov)
