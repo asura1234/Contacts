@@ -15,7 +15,7 @@ This is a single view app. The main view can be broken into two collection views
 - Animate a shadow showing and hiding during and after scrolling
 
 ## Limitations
-- The cirlcular profile images are set to a fixed size of 80 px by 80 px. 
+- The cirlcular profile images are set to a fixed size of 80 px by 80 px instead of dynamically sized.
 - The app is set to portrait only. If I were to add support for landscape mode, I would use an alternative layout to have the profile image collection view on the left hand side of the screen and make it scroll vertically. 
 - The shadow animation is triggered by scrolling either of the top or bottom collectin view. The [video of the Contacts app](challenge.mov) only showed it triggered by scrolling on the bottom collection view.
 - I used storyboard and autolayout for building the view. In my view controller, I overriden some of the methods for UICollectionViewDataSource, UICollectionViewDelegate, and UICollectionViewLayout to achieve the desired behavior. 
