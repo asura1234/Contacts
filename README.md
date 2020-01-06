@@ -12,7 +12,7 @@ This is a single view app. The main view can be broken into two collection views
 - Update selection when either of the collection view is being scrolled
 - Enable paging on the bottom collection
 - Center the profile image cell when it is selected
-- Stop the scrolling with a profile image cell alwasy in the center of the profile image collection view
+- Stop the scrolling with a profile image cell in the center of the profile image collection view
 - Animate a shadow showing and hiding during and after scrolling
 
 ## Limitations
