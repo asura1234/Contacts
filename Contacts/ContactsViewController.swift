@@ -23,8 +23,6 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
     private let profileImageLayout = ProfileImageCollectionLayout()
     private let profileInformationLayout = UICollectionViewFlowLayout()
     
-    
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         // for the first item and last item in the profile image collection view
@@ -65,7 +63,7 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
                 print("Not able to decode contacts.json file. ")
             }
         } else {
-            print("Not able to locate contacts.json file in the \(path)")
+            print("Not able to locate contacts.json file in the bundle.")
         }
         
         // setup profile image collection view
