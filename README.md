@@ -4,7 +4,7 @@ This iOS coding challenge is part of the interview process for the iOS engineer 
 https://github.com/outlook/jobs/blob/master/instructions/ios/ios-engineer.md 
 
 ## Implementation
-This is a single view app. The main view can be broken into two collection views (top: profile image collection view, bottom: profile information collection view). Profile image collection scrolls horizontally, and profile information collection view scrolls vertically. I followed the model view controller designer pattern in this project. The app is data driven with the data derived from the [contacts.json](contacts.json) and images from [avatars.zip](avatars.zip). 
+This is a single view app. The main view can be broken into two collection views (top: profile image collection view, bottom: profile information collection view). Profile image collection scrolls horizontally, and profile information collection view scrolls vertically. I followed the model view controller designer pattern in this project. The app is data driven with the data derived from the [contacts.json](contacts.json) and images from [avatars.zip](avatars.zip). I used storyboard and autolayout for building the view. In my view controller, I overriden some of the methods from UICollectionViewDataSource, UICollectionViewDelegate, and UICollectionViewLayout to achieve the desired behavior. I find this to be a balanced approach between using storyboard and code.
 
 ## Features
 - Synchronize scrolling between the profile image collection view and profile information collection view
@@ -18,4 +18,4 @@ This is a single view app. The main view can be broken into two collection views
 - The cirlcular profile images are set to a fixed size of 80 px by 80 px instead of dynamically sized.
 - The app is set to portrait only. If I were to add support for landscape mode, I would use an alternative layout to have the profile image collection view on the left hand side of the screen and make it scroll vertically. 
 - The shadow animation is triggered by scrolling either of the top or bottom collectin view. The [video of the Contacts app](challenge.mov) only showed it triggered by scrolling on the bottom collection view.
-- I used storyboard and autolayout for building the view. In my view controller, I overriden some of the methods for UICollectionViewDataSource, UICollectionViewDelegate, and UICollectionViewLayout to achieve the desired behavior. 
+- Tests were done on iPhone 8, and iPhone 11, and iPhone 11 plus in the simulator. No test was done on iPad.
