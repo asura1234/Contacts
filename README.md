@@ -11,4 +11,4 @@ This is a single view app. The main view can be broken into two collection views
 - Enable paging on the bottom collection
 - Center the profile image cell when it is selected
 - Stop the scrolling with a profile image cell alwasy in the center of the profile image collection view
-- show a shadow under the profile image collection view during scrolling, and hide it after scrolling is finished
+- Show a shadow under the profile image collection view during scrolling, and hide it after scrolling is finished
