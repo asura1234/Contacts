@@ -61,8 +61,13 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
             let decoder = JSONDecoder()
             if let persons = try? decoder.decode([ContactPerson].self, from: data) {
                 self.persons = persons
+            } else {
+                print("Not able to decode contacts.json file. ")
             }
+        } else {
+            print("Not able to locate contacts.json file in the \(path)")
         }
+        
         // setup profile image collection view
         profileImagecollectionView.delegate = self
         profileImagecollectionView.dataSource = self
