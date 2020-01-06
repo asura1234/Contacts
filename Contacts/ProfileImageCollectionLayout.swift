@@ -10,6 +10,8 @@ import UIKit
 
 class ProfileImageCollectionLayout: UICollectionViewFlowLayout {
     
+    // snap to the the target contentOffset that result in
+    // the scrolling always stops with an item in the center of the collection view
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         
         var currentPage = proposedContentOffset.x / (itemSize.width + minimumLineSpacing)

@@ -11,6 +11,7 @@ import UIKit
 class ProfileImageCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var profileImage: CircularImageView!
+    
     @IBInspectable
     var borderWidth: CGFloat = 5.0
     
