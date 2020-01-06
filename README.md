@@ -26,4 +26,5 @@ I do not wish to overcomplicate the problem. My goal is to replicate the behavio
 - Tests were done on iPhone 8, and iPhone 11, and iPhone 11 plus in the simulator. No test was done on iPad.
 
 ## Result 
-
+Here is a screen recording of the app running in the simulator:
+[Demo Vide](ContactsDemoRecording.mov)
