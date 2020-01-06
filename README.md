@@ -27,5 +27,6 @@ I do not wish to overcomplicate the problem. My goal is to replicate the behavio
 
 ## Result 
 ![](ContactsDemo.gif)
+
 Here is a screen recording of the app running in the simulator:
 [Demo Video](ContactsDemoRecording.mov)
