@@ -17,6 +17,23 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
     var selectedIndex: Int = 0
     var profileImageCellSize: CGFloat = 80
     
+    let profileImageLayout = ProfileImageCollectionLayout()
+    let profileInformationLayout = UICollectionViewFlowLayout()
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        profileImageLayout.scrollDirection = .horizontal
+        profileImageLayout.itemSize = CGSize(width: 80, height: 80)
+        profileImageLayout.minimumLineSpacing = 10
+        profileImageLayout.sectionInset = UIEdgeInsets(top: 0,left: padding ,bottom: 0,right: padding)
+        
+        profileInformationLayout.scrollDirection = .vertical
+        profileInformationLayout.itemSize = profileInformationCollectionView.frame.size
+        profileInformationLayout.minimumLineSpacing = 0
+        profileInformationLayout.minimumInteritemSpacing = 0
+        profileInformationLayout.sectionInset = UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 0)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // set the title on the navigation bar
@@ -31,7 +48,10 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
         // setup profile image collection view
         profileImagecollectionView.delegate = self
         profileImagecollectionView.dataSource = self
-        profileImagecollectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: [.centeredHorizontally])
+        profileImagecollectionView.isPagingEnabled = false
+         profileImagecollectionView.collectionViewLayout = profileImageLayout
+        profileImagecollectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: [])
+        
         /*profileImagecollectionView.layer.shadowColor = UIColor.gray.cgColor
         profileImagecollectionView.layer.shadowRadius = 2
         profileImagecollectionView.layer.shadowOffset = CGSize(width: 0, height: 3)
@@ -39,25 +59,11 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
         profileImagecollectionView.layer.shadowPath = UIBezierPath(rect: CGRect(origin: .zero, size: profileImagecollectionView.contentSize)).cgPath
         profileImagecollectionView.layer.masksToBounds = false*/
         
-        profileImagecollectionView.isPagingEnabled = false
-        let profileImageLayout = ProfileImageCollectionLayout()
-        profileImageLayout.scrollDirection = .horizontal
-        profileImageLayout.itemSize = CGSize(width: 80, height: 80)
-        profileImageLayout.minimumLineSpacing = 10
-        profileImageLayout.sectionInset = UIEdgeInsets(top: 0,left: padding ,bottom: 0,right: padding)
-        profileImagecollectionView.collectionViewLayout = profileImageLayout
-        
         // setup profile information collection view
         profileInformationCollectionView.delegate = self
         profileInformationCollectionView.dataSource = self
         profileInformationCollectionView.allowsSelection = false
         profileInformationCollectionView.isPagingEnabled = true
-        let profileInformationLayout = UICollectionViewFlowLayout()
-        profileInformationLayout.scrollDirection = .vertical
-        profileInformationLayout.itemSize = profileInformationCollectionView.frame.size
-        profileInformationLayout.minimumLineSpacing = 0
-        profileInformationLayout.minimumInteritemSpacing = 0
-        profileInformationLayout.sectionInset = UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 0)
         profileInformationCollectionView.collectionViewLayout = profileInformationLayout
     }
     
@@ -106,15 +112,19 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
     private lazy var padding = (profileImagecollectionView.frame.size.width - profileImageCellSize)/2
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == profileImagecollectionView {
-            let percentage = profileImagecollectionView.contentOffset.x / (profileImagecollectionView.contentSize.width - 2*padding + 20)
-            let y = profileInformationCollectionView.contentSize.height * percentage
+            let percentage = profileImagecollectionView.contentOffset.x / (profileImagecollectionView.contentSize.width - 2*padding + 10)
+            let y = (profileInformationCollectionView.contentSize.height) * percentage
             profileInformationCollectionView.contentOffset = CGPoint(x: 0, y: y)
         }
-        else if scrollView == profileInformationCollectionView {
-            let percentage = profileInformationCollectionView.contentOffset.y / profileInformationCollectionView.contentSize.height
-            let x = (profileImagecollectionView.contentSize.width - 2*padding +  20) * percentage
-            profileImagecollectionView.contentOffset = CGPoint(x: x, y: 0)
+        
+        if scrollView == profileInformationCollectionView {
+            let percentage = (profileInformationCollectionView.contentOffset.y) / (profileInformationCollectionView.contentSize.height)
+            let x = (profileImagecollectionView.contentSize.width - 2*padding + 10) * percentage
+            profileImagecollectionView.contentOffset = CGPoint(x: CGFloat(x), y: 0)
         }
+        
+        print("Profile Image View Content Offset: \(profileImagecollectionView.contentOffset)")
+        print("Profile Information View Content Offset: \(profileInformationCollectionView.contentOffset)")
         
         if scrollView == profileInformationCollectionView || scrollView == profileImagecollectionView {
             let point = CGPoint(x: profileInformationCollectionView.contentOffset.x, y: profileInformationCollectionView.contentOffset.y + profileInformationCollectionView.frame.height/2)
