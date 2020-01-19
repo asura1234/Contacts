@@ -9,12 +9,20 @@
 import Foundation
 import UIKit
 
-struct ContactPerson : Codable {
-    let first_name: String
-    let last_name: String
-    let avatar_filename: String
+struct Profile : Codable {
+    let firstName: String
+    let lastName: String
+    let imageName: String
     let title: String
-    let introduction: String
+    let information: String
+    
+    private enum CodingKeys : String, CodingKey {
+        case firstName = "first_ name"
+        case lastName = "last_name"
+        case imageName = "avatar_filename"
+        case title
+        case information = "introduction"
+    }
 }
 
 extension UIColor {
@@ -27,10 +35,10 @@ extension UIColor {
     }
 }
 
-extension ContactPerson {
+extension Profile {
     // extract the UIImage from bundle using the image name
     var profileImage: UIImage {
-        if let image = UIImage(named: avatar_filename) {
+        if let image = UIImage(named: imageName) {
             return image
         } else {
             // if there is no image in the bundle with that image name

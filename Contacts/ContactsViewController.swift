@@ -13,7 +13,7 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var profileImagecollectionView: UICollectionView!
     @IBOutlet weak var profileInformationCollectionView: UICollectionView!
     
-    var persons: [ContactPerson] = []
+    var profiles: [Profile] = []
     var selectedIndex: Int = 0
     
     private let profileImageCellSize: CGFloat = 80
@@ -57,8 +57,8 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
         // deserialize the contacts.json file to an array of ContactPerson Objects
         if let path = Resources.contactsJsonPath, let data = try? Data(contentsOf: URL(fileURLWithPath: path)) {
             let decoder = JSONDecoder()
-            if let persons = try? decoder.decode([ContactPerson].self, from: data) {
-                self.persons = persons
+            if let profiles = try? decoder.decode([Profile].self, from: data) {
+                self.profiles = profiles
             } else {
                 print("Not able to decode contacts.json file. ")
             }
@@ -92,16 +92,16 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
     
     // Mark: Implement UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return persons.count
+        return profiles.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let person = persons[indexPath.item]
+        let profile = profiles[indexPath.item]
         if collectionView == profileImagecollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileImageCell", for: indexPath)
             if let profileImageCell = cell as? ProfileImageCollectionViewCell {
-                profileImageCell.profileImage.image = person.profileImage
+                profileImageCell.profileImage.image = profile.profileImage
             }
             return cell
         } else {
@@ -110,21 +110,21 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
             if let profileInformationCell = cell as?
                 ProfileInformationCollectionViewCell {
 
-                let attributedName = NSMutableAttributedString(string: person.first_name + " " + person.last_name);
+                let attributedName = NSMutableAttributedString(string: profile.firstName + " " + profile.lastName);
                 
                 // make sure the custom font scale to the desired size based on acessibility settings
                 let title3Metrics = UIFontMetrics(forTextStyle: .title3)
                 let boldFont = title3Metrics.scaledFont(for: UIFont.boldSystemFont(ofSize: 24))
                 
-                attributedName.addAttribute(.font, value: boldFont, range: NSRange(location: 0, length: person.first_name.count))
+                attributedName.addAttribute(.font, value: boldFont, range: NSRange(location: 0, length: profile.firstName.count))
                 
                  // make sure the custom font scale to the desired size based on acessibility settings
                 let thinFont = title3Metrics.scaledFont(for: UIFont(name: "HelveticaNeue-Light", size: 24) ?? UIFont.systemFont(ofSize: 24))
-                attributedName.addAttribute(.font, value: thinFont, range: NSRange(location: person.first_name.count + 1, length: person.last_name.count))
+                attributedName.addAttribute(.font, value: thinFont, range: NSRange(location: profile.firstName.count + 1, length: profile.lastName.count))
                 
                 profileInformationCell.nameLabel.attributedText = attributedName
-                profileInformationCell.titleLabel.text = person.title
-                profileInformationCell.introductionLabel.text = person.introduction
+                profileInformationCell.titleLabel.text = profile.title
+                profileInformationCell.introductionLabel.text = profile.information
             }
             return cell
         }
