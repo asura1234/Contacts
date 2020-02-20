@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContactsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class ContactsViewController: UIViewController {
     
     @IBOutlet weak var profileImagecollectionView: UICollectionView!
     @IBOutlet weak var profileInformationCollectionView: UICollectionView!
@@ -33,7 +33,7 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
         profileImageLayout.minimumLineSpacing = profileImageCellSpacing
         profileImageLayout.sectionInset = UIEdgeInsets(top: 0,left: padding ,bottom: 0,right: padding)
         
-        // TODO: the shadow scrolls with the items inside profile image collection view
+        // the shadow scrolls with the items inside profile image collection view
         // so I had to make it really wide ...
         profileImagecollectionView.layer.shadowPath = UIBezierPath(rect: CGRect(origin: CGPoint(x: -padding, y: 0), size: CGSize(width: profileImagecollectionView.contentSize.width + 2*padding, height: profileImagecollectionView.frame.height))).cgPath
         
@@ -89,14 +89,15 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
         // set initial selection to item 0
         profileImagecollectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: [])
     }
-    
-    // Mark: Implement UICollectionViewDataSource
+}
+
+// MARK: Implement UICollectionViewDataSource
+extension ContactsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return profiles.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let profile = profiles[indexPath.item]
         if collectionView == profileImagecollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileImageCell", for: indexPath)
@@ -129,8 +130,10 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
             return cell
         }
     }
-    
-    // Mark: Implement UICollectionViewDelegate
+}
+
+//MARK: Implement UICollectionViewDelegate
+extension ContactsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         profileImagecollectionView.selectItem(at: indexPath, animated: true, scrollPosition: [.centeredHorizontally])
         selectedIndex = indexPath.item
@@ -160,7 +163,7 @@ class ContactsViewController: UIViewController, UICollectionViewDataSource, UICo
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        // synchronize scrolling between the two collection views 
+        // synchronize scrolling between the two collection views
         if scrollView == profileImagecollectionView {
             let percentage = profileImagecollectionView.contentOffset.x / (profileImagecollectionView.contentSize.width - 2*padding + profileImageLayout.minimumLineSpacing)
             let y = (profileInformationCollectionView.contentSize.height) * percentage
