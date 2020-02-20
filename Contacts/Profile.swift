@@ -17,7 +17,7 @@ struct Profile : Codable {
     let information: String
     
     private enum CodingKeys : String, CodingKey {
-        case firstName = "first_ name"
+        case firstName = "first_name"
         case lastName = "last_name"
         case imageName = "avatar_filename"
         case title
