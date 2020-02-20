@@ -103,8 +103,27 @@
 		8AB2682D23BFA07000D94AE4 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB2682C23BFA07000D94AE4 /* Profile.swift */; };
 		8AB2683123BFAC2200D94AE4 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB2683023BFAC2200D94AE4 /* Resources.swift */; };
 		8AB2683323BFF8B000D94AE4 /* ProfileImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB2683223BFF8B000D94AE4 /* ProfileImageCollectionViewCell.swift */; };
-		8AC9DCBA23C0356800729820 /* CircularImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC9DCB923C0356800729820 /* CircularImageView.swift */; };
+		8AFF20A923FF1310006A81EE /* JsonParsingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFF20A823FF1310006A81EE /* JsonParsingTest.swift */; };
+		8AFF20B023FF1320006A81EE /* contacts.json in Resources */ = {isa = PBXBuildFile; fileRef = 8AA62C6C23C0D9000040E8A5 /* contacts.json */; };
+		8AFF20B823FF2A58006A81EE /* ContactsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFF20B723FF2A58006A81EE /* ContactsUITests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8AFF20AB23FF1310006A81EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8A34BFE123BF96B5006B560E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8A34BFE823BF96B5006B560E;
+			remoteInfo = Contacts;
+		};
+		8AFF20BA23FF2A58006A81EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8A34BFE123BF96B5006B560E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8A34BFE823BF96B5006B560E;
+			remoteInfo = Contacts;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		8A34BFE923BF96B5006B560E /* Contacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Contacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -205,11 +224,30 @@
 		8AB2682C23BFA07000D94AE4 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Profile.swift; path = Contacts/Profile.swift; sourceTree = SOURCE_ROOT; };
 		8AB2683023BFAC2200D94AE4 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		8AB2683223BFF8B000D94AE4 /* ProfileImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageCollectionViewCell.swift; sourceTree = "<group>"; };
-		8AC9DCB923C0356800729820 /* CircularImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularImageView.swift; sourceTree = "<group>"; };
+		8AFF20A623FF1310006A81EE /* JsonParsingTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JsonParsingTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AFF20A823FF1310006A81EE /* JsonParsingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonParsingTest.swift; sourceTree = "<group>"; };
+		8AFF20AA23FF1310006A81EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8AFF20B523FF2A58006A81EE /* ContactsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ContactsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AFF20B723FF2A58006A81EE /* ContactsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsUITests.swift; sourceTree = "<group>"; };
+		8AFF20B923FF2A58006A81EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		8A34BFE623BF96B5006B560E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8AFF20A323FF1310006A81EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8AFF20B223FF2A58006A81EE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -223,6 +261,8 @@
 			isa = PBXGroup;
 			children = (
 				8A34BFEB23BF96B5006B560E /* Contacts */,
+				8AFF20A723FF1310006A81EE /* JsonParsingTest */,
+				8AFF20B623FF2A58006A81EE /* ContactsUITests */,
 				8A34BFEA23BF96B5006B560E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -231,6 +271,8 @@
 			isa = PBXGroup;
 			children = (
 				8A34BFE923BF96B5006B560E /* Contacts.app */,
+				8AFF20A623FF1310006A81EE /* JsonParsingTest.xctest */,
+				8AFF20B523FF2A58006A81EE /* ContactsUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -240,13 +282,12 @@
 			children = (
 				8AA62CCB23C24B300040E8A5 /* ProfileImageCollectionLayout.swift */,
 				8AB2683223BFF8B000D94AE4 /* ProfileImageCollectionViewCell.swift */,
-				8AC9DCB923C0356800729820 /* CircularImageView.swift */,
 				8A34BFF023BF96B5006B560E /* ContactsViewController.swift */,
 				8A34BFF223BF96B5006B560E /* Main.storyboard */,
 				8AA62CC523C0F5E00040E8A5 /* ProfileInformationCollectionViewCell.swift */,
-				8A34BFFA23BF96B7006B560E /* Info.plist */,
 				8AB2682C23BFA07000D94AE4 /* Profile.swift */,
 				8AB2683023BFAC2200D94AE4 /* Resources.swift */,
+				8A34BFFA23BF96B7006B560E /* Info.plist */,
 				8AA62C1A23C0D9000040E8A5 /* Resources */,
 				8A34C00023BF9722006B560E /* Supporting Files */,
 			);
@@ -356,6 +397,24 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		8AFF20A723FF1310006A81EE /* JsonParsingTest */ = {
+			isa = PBXGroup;
+			children = (
+				8AFF20A823FF1310006A81EE /* JsonParsingTest.swift */,
+				8AFF20AA23FF1310006A81EE /* Info.plist */,
+			);
+			path = JsonParsingTest;
+			sourceTree = "<group>";
+		};
+		8AFF20B623FF2A58006A81EE /* ContactsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8AFF20B723FF2A58006A81EE /* ContactsUITests.swift */,
+				8AFF20B923FF2A58006A81EE /* Info.plist */,
+			);
+			path = ContactsUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -376,6 +435,42 @@
 			productReference = 8A34BFE923BF96B5006B560E /* Contacts.app */;
 			productType = "com.apple.product-type.application";
 		};
+		8AFF20A523FF1310006A81EE /* JsonParsingTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8AFF20AD23FF1310006A81EE /* Build configuration list for PBXNativeTarget "JsonParsingTest" */;
+			buildPhases = (
+				8AFF20A223FF1310006A81EE /* Sources */,
+				8AFF20A323FF1310006A81EE /* Frameworks */,
+				8AFF20A423FF1310006A81EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8AFF20AC23FF1310006A81EE /* PBXTargetDependency */,
+			);
+			name = JsonParsingTest;
+			productName = JsonParsingTest;
+			productReference = 8AFF20A623FF1310006A81EE /* JsonParsingTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8AFF20B423FF2A58006A81EE /* ContactsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8AFF20BC23FF2A58006A81EE /* Build configuration list for PBXNativeTarget "ContactsUITests" */;
+			buildPhases = (
+				8AFF20B123FF2A58006A81EE /* Sources */,
+				8AFF20B223FF2A58006A81EE /* Frameworks */,
+				8AFF20B323FF2A58006A81EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8AFF20BB23FF2A58006A81EE /* PBXTargetDependency */,
+			);
+			name = ContactsUITests;
+			productName = ContactsUITests;
+			productReference = 8AFF20B523FF2A58006A81EE /* ContactsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -388,6 +483,14 @@
 				TargetAttributes = {
 					8A34BFE823BF96B5006B560E = {
 						CreatedOnToolsVersion = 11.3;
+					};
+					8AFF20A523FF1310006A81EE = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = 8A34BFE823BF96B5006B560E;
+					};
+					8AFF20B423FF2A58006A81EE = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = 8A34BFE823BF96B5006B560E;
 					};
 				};
 			};
@@ -405,6 +508,8 @@
 			projectRoot = "";
 			targets = (
 				8A34BFE823BF96B5006B560E /* Contacts */,
+				8AFF20A523FF1310006A81EE /* JsonParsingTest */,
+				8AFF20B423FF2A58006A81EE /* ContactsUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -505,6 +610,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8AFF20A423FF1310006A81EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AFF20B023FF1320006A81EE /* contacts.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8AFF20B323FF2A58006A81EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -515,7 +635,6 @@
 				8AB2683323BFF8B000D94AE4 /* ProfileImageCollectionViewCell.swift in Sources */,
 				8AA62CCC23C24B300040E8A5 /* ProfileImageCollectionLayout.swift in Sources */,
 				8A34BFF123BF96B5006B560E /* ContactsViewController.swift in Sources */,
-				8AC9DCBA23C0356800729820 /* CircularImageView.swift in Sources */,
 				8AA62CC623C0F5E00040E8A5 /* ProfileInformationCollectionViewCell.swift in Sources */,
 				8AB2683123BFAC2200D94AE4 /* Resources.swift in Sources */,
 				8AB2682D23BFA07000D94AE4 /* Profile.swift in Sources */,
@@ -524,7 +643,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8AFF20A223FF1310006A81EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AFF20A923FF1310006A81EE /* JsonParsingTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8AFF20B123FF2A58006A81EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AFF20B823FF2A58006A81EE /* ContactsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8AFF20AC23FF1310006A81EE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8A34BFE823BF96B5006B560E /* Contacts */;
+			targetProxy = 8AFF20AB23FF1310006A81EE /* PBXContainerItemProxy */;
+		};
+		8AFF20BB23FF2A58006A81EE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8A34BFE823BF96B5006B560E /* Contacts */;
+			targetProxy = 8AFF20BA23FF2A58006A81EE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8A34BFF223BF96B5006B560E /* Main.storyboard */ = {
@@ -696,6 +844,84 @@
 			};
 			name = Release;
 		};
+		8AFF20AE23FF1310006A81EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X3EQ5SGHFP;
+				INFOPLIST_FILE = JsonParsingTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = YangLiu.JsonParsingTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Contacts.app/Contacts";
+			};
+			name = Debug;
+		};
+		8AFF20AF23FF1310006A81EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X3EQ5SGHFP;
+				INFOPLIST_FILE = JsonParsingTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = YangLiu.JsonParsingTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Contacts.app/Contacts";
+			};
+			name = Release;
+		};
+		8AFF20BD23FF2A58006A81EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X3EQ5SGHFP;
+				INFOPLIST_FILE = ContactsUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = YangLiu.ContactsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Contacts;
+			};
+			name = Debug;
+		};
+		8AFF20BE23FF2A58006A81EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X3EQ5SGHFP;
+				INFOPLIST_FILE = ContactsUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = YangLiu.ContactsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Contacts;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -713,6 +939,24 @@
 			buildConfigurations = (
 				8A34BFFE23BF96B7006B560E /* Debug */,
 				8A34BFFF23BF96B7006B560E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8AFF20AD23FF1310006A81EE /* Build configuration list for PBXNativeTarget "JsonParsingTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8AFF20AE23FF1310006A81EE /* Debug */,
+				8AFF20AF23FF1310006A81EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8AFF20BC23FF2A58006A81EE /* Build configuration list for PBXNativeTarget "ContactsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8AFF20BD23FF2A58006A81EE /* Debug */,
+				8AFF20BE23FF2A58006A81EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
