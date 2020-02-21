@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7pO-R1-EIF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7pO-R1-EIF">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="105"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="105" id="ubY-Kh-Gnp"/>
+                                    <constraint firstAttribute="height" constant="105" id="NBj-pa-Dsq"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5mm-sG-aCa">
                                     <size key="itemSize" width="80" height="80"/>
@@ -32,23 +32,22 @@
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="ProfileImageCell" id="XuX-gq-h6U" customClass="ProfileImageCollectionViewCell" customModule="Contacts" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="12.5" width="80" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" insetsLayoutMarginsFromSafeArea="NO" id="f6a-Aw-xxw">
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="PjE-4I-6Xv">
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Allan Munger.png" translatesAutoresizingMaskIntoConstraints="NO" id="d1S-02-YPt" customClass="CircularImageView" customModule="Contacts" customModuleProvider="target">
                                                     <rect key="frame" x="5" y="5" width="70" height="70"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="70" id="Dug-tE-DYx"/>
-                                                        <constraint firstAttribute="width" constant="70" id="dWR-4I-9Fo"/>
-                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="d1S-02-YPt" firstAttribute="centerX" secondItem="f6a-Aw-xxw" secondAttribute="centerX" id="Qjl-nw-wwb"/>
-                                                <constraint firstItem="d1S-02-YPt" firstAttribute="centerY" secondItem="f6a-Aw-xxw" secondAttribute="centerY" id="fNU-m0-Uob"/>
+                                                <constraint firstItem="d1S-02-YPt" firstAttribute="centerX" secondItem="PjE-4I-6Xv" secondAttribute="centerX" id="Qjl-nw-wwb"/>
+                                                <constraint firstItem="d1S-02-YPt" firstAttribute="height" secondItem="PjE-4I-6Xv" secondAttribute="height" constant="-10" id="UL5-cP-ADe"/>
+                                                <constraint firstItem="d1S-02-YPt" firstAttribute="width" secondItem="PjE-4I-6Xv" secondAttribute="width" constant="-10" id="XBr-Ag-aWx"/>
+                                                <constraint firstItem="d1S-02-YPt" firstAttribute="centerY" secondItem="PjE-4I-6Xv" secondAttribute="centerY" id="fNU-m0-Uob"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                        <size key="customSize" width="80" height="80"/>
                                         <connections>
                                             <outlet property="profileImage" destination="d1S-02-YPt" id="jju-AT-5Gq"/>
                                         </connections>
@@ -58,7 +57,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oLB-h6-Rsm">
                                 <rect key="frame" x="0.0" y="201" width="414" height="695"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="epw-hg-k6d">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="epw-hg-k6d">
                                     <size key="itemSize" width="414" height="697"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>

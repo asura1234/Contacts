@@ -9,7 +9,12 @@
 import UIKit
 
 class ProfileImageCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var profileImage: UIImageView! { didSet {
+        profileImage.clipsToBounds = true
+        profileImage.layer.masksToBounds = false
+        profileImage.layer.cornerRadius = profileImage.frame.size.height/2
+        }
+    }
     
     @IBInspectable
     var borderWidth: CGFloat = 5.0
@@ -21,9 +26,6 @@ class ProfileImageCollectionViewCell: UICollectionViewCell {
     var borderAlpha: CGFloat = 0.5
     
     override func awakeFromNib() {
-        profileImage.clipsToBounds = true
-        profileImage.layer.masksToBounds = false
-        profileImage.layer.cornerRadius = profileImage.frame.size.height/2
         self.clipsToBounds = true
         self.layer.masksToBounds = false
         self.frame = profileImage.frame.insetBy(dx: -borderWidth, dy: -borderWidth)

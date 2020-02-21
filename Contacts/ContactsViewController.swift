@@ -71,6 +71,7 @@ class ContactsViewController: UIViewController {
         profileImagecollectionView.dataSource = self
         profileImagecollectionView.isPagingEnabled = false
         profileImagecollectionView.collectionViewLayout = profileImageLayout
+        profileImagecollectionView.accessibilityIdentifier = "profile image collection view"
         
         // setup the shadow under the image collection view
         profileImagecollectionView.layer.shadowColor = UIColor.gray.cgColor
@@ -85,6 +86,7 @@ class ContactsViewController: UIViewController {
         profileInformationCollectionView.allowsSelection = false
         profileInformationCollectionView.isPagingEnabled = true
         profileInformationCollectionView.collectionViewLayout = profileInformationLayout
+        profileInformationCollectionView.accessibilityIdentifier = "profile information collection view"
         
         // set initial selection to item 0
         profileImagecollectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: [])
@@ -103,6 +105,8 @@ extension ContactsViewController: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileImageCell", for: indexPath)
             if let profileImageCell = cell as? ProfileImageCollectionViewCell {
                 profileImageCell.profileImage.image = profile.profileImage
+                profileImageCell.profileImage.accessibilityLabel = profile.imageName
+                profileImageCell.accessibilityIdentifier = "profile image cell at \(indexPath.row)"
             }
             return cell
         } else {
@@ -126,6 +130,8 @@ extension ContactsViewController: UICollectionViewDataSource {
                 profileInformationCell.nameLabel.attributedText = attributedName
                 profileInformationCell.titleLabel.text = profile.title
                 profileInformationCell.introductionLabel.text = profile.information
+                
+                profileInformationCell.accessibilityIdentifier = "profile information cell at \(indexPath.row)"
             }
             return cell
         }
@@ -139,8 +145,8 @@ extension ContactsViewController: UICollectionViewDelegate {
         selectedIndex = indexPath.item
     }
     
-    // show the shadow under the image collection view
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        // show the shadow under the image collection view
         UIView.transition(
         with: profileImagecollectionView,
         duration: 0.5,
@@ -150,8 +156,8 @@ extension ContactsViewController: UICollectionViewDelegate {
         })
     }
     
-    // hide the shadow under the image collection view
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        // hide the shadow under the image collection view
         UIView.transition(
         with: profileImagecollectionView,
         duration: 0.5,
@@ -162,7 +168,6 @@ extension ContactsViewController: UICollectionViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
         // synchronize scrolling between the two collection views
         if scrollView == profileImagecollectionView {
             let percentage = profileImagecollectionView.contentOffset.x / (profileImagecollectionView.contentSize.width - 2*padding + profileImageLayout.minimumLineSpacing)
