@@ -64,11 +64,11 @@ class ContactsUITests: XCTestCase {
         app.launch()
         
         let profileImageCollectionView = app.collectionViews["profile image collection view"]
-        let profileInformationCollectionView = app.collectionViews["profile information collection view"]
         
         profileImageCollectionView/*@START_MENU_TOKEN@*/.swipeLeft()/*[[".swipeUp()",".swipeLeft()"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
         profileImageCollectionView.swipeRight()
         profileImageCollectionView.swipeLeft()
+        profileImageCollectionView.swipeRight()
         profileImageCollectionView.swipeLeft()
         profileImageCollectionView.swipeRight()
     }
@@ -80,61 +80,41 @@ class ContactsUITests: XCTestCase {
         let profileImageCollectionView = app.collectionViews["profile image collection view"]
         let profileInformationCollectionView = app.collectionViews["profile information collection view"]
         
+        XCTAssertTrue(profileImageCollectionView.cells["profile image cell at 0"].isSelected)
+        
         profileInformationCollectionView.swipeUp()
+        XCTAssertTrue(profileImageCollectionView.cells["profile image cell at 1"].isSelected)
+        
         profileInformationCollectionView.swipeUp()
+        XCTAssertTrue(profileImageCollectionView.cells["profile image cell at 2"].isSelected)
+        
         profileInformationCollectionView.swipeUp()
+        XCTAssertTrue(profileImageCollectionView.cells["profile image cell at 3"].isSelected)
+        
         profileInformationCollectionView.swipeUp()
+        XCTAssertTrue(profileImageCollectionView.cells["profile image cell at 4"].isSelected)
+        
         profileInformationCollectionView.swipeUp()
-        profileInformationCollectionView.swipeUp()
-        profileInformationCollectionView.swipeUp()
-        profileInformationCollectionView.swipeUp()
-        profileInformationCollectionView.swipeUp()
-        profileInformationCollectionView.swipeUp()
-        profileInformationCollectionView.swipeUp()
-        profileInformationCollectionView.swipeUp()
-        profileInformationCollectionView.swipeUp()
-        profileInformationCollectionView.swipeUp()
-        profileInformationCollectionView.swipeUp()
-        profileInformationCollectionView.swipeUp()
-        profileInformationCollectionView.swipeUp()
-        profileInformationCollectionView.swipeUp()
-        profileInformationCollectionView.swipeUp()
-        profileInformationCollectionView.swipeUp()
-        profileInformationCollectionView.swipeUp()
-        profileInformationCollectionView.swipeUp()
-        profileInformationCollectionView.swipeUp()
-        profileInformationCollectionView.swipeUp()
-        profileInformationCollectionView.swipeUp()
-        profileInformationCollectionView.swipeUp()
-        profileInformationCollectionView.swipeUp()
-
+        XCTAssertTrue(profileImageCollectionView.cells["profile image cell at 5"].isSelected)
         
         profileInformationCollectionView.swipeDown()
+        XCTAssertTrue(profileImageCollectionView.cells["profile image cell at 4"].isSelected)
+        
         profileInformationCollectionView.swipeDown()
+        XCTAssertTrue(profileImageCollectionView.cells["profile image cell at 3"].isSelected)
+        
         profileInformationCollectionView.swipeDown()
+        XCTAssertTrue(profileImageCollectionView.cells["profile image cell at 2"].isSelected)
+        
         profileInformationCollectionView.swipeDown()
+        XCTAssertTrue(profileImageCollectionView.cells["profile image cell at 1"].isSelected)
+        
         profileInformationCollectionView.swipeDown()
-        profileInformationCollectionView.swipeDown()
-        profileInformationCollectionView.swipeDown()
-        profileInformationCollectionView.swipeDown()
-        profileInformationCollectionView.swipeDown()
-        profileInformationCollectionView.swipeDown()
-        profileInformationCollectionView.swipeDown()
-        profileInformationCollectionView.swipeDown()
-        profileInformationCollectionView.swipeDown()
-        profileInformationCollectionView.swipeDown()
-        profileInformationCollectionView.swipeDown()
-        profileInformationCollectionView.swipeDown()
-        profileInformationCollectionView.swipeDown()
-        profileInformationCollectionView.swipeDown()
-        profileInformationCollectionView.swipeDown()
-        profileInformationCollectionView.swipeDown()
-        profileInformationCollectionView.swipeDown()
-        profileInformationCollectionView.swipeDown()
-        profileInformationCollectionView.swipeDown()
-        profileInformationCollectionView.swipeDown()
-        profileInformationCollectionView.swipeDown()
-        profileInformationCollectionView.swipeDown()
-        profileInformationCollectionView.swipeDown()
+        XCTAssertTrue(profileImageCollectionView.cells["profile image cell at 0"].isSelected)
+    }
+    
+    func combinationTest() {
+        let app = XCUIApplication()
+        app.launch()
     }
 }
