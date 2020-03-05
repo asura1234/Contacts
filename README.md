@@ -1,7 +1,7 @@
 # Contacts
 
 ## Challenge
-This iOS coding challenge is part of the interview process for the iOS engineer role at Outlook Mobile iOS team at Microsoft Suzhou. The goal is is to replicate the behavior exhibit in [video of the Contacts app](challenge.mov). I have completed this challenge without any outside help. It took me about 10 hours worth of work to complete this challenge. I've tried my best to replicate all the behaviors exhibted in the [video of the Contacts app](challenge.mov). The requirements of the orignal challenge can be found here:
+This iOS coding challenge is part of the interview process for the iOS engineer role at Outlook Mobile iOS team at Microsoft Suzhou. The goal of the challenge is to replicate the behavior exhibit in [video of the Contacts app](challenge.mov). I have completed this challenge without any outside help. It took me about 10 hours worth of work to complete this challenge. I've tried my best to replicate all the behaviors exhibted in the [video of the Contacts app](challenge.mov). The requirements of the orignal challenge can be found here:
 https://github.com/outlook/jobs/blob/master/instructions/ios/ios-engineer.md 
 
 ## Implementation
