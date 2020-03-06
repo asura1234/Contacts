@@ -106,6 +106,7 @@ extension ContactsViewController: UICollectionViewDataSource {
             if let profileImageCell = cell as? ProfileImageCollectionViewCell {
                 profileImageCell.profile = profile
                 profileImageCell.accessibilityIdentifier = "profile image cell at \(indexPath.row)"
+
             }
             return cell
         } else {

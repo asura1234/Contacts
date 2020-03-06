@@ -12,23 +12,37 @@ class ProfileInformationCollectionViewCell: UICollectionViewCell {
     var profile: Profile? {
         didSet {
             if let profile = profile {
-                let attributedName = NSMutableAttributedString(string: profile.firstName + " " + profile.lastName);
-                
-                // make sure the custom font scale to the desired size based on acessibility settings
-                let title3Metrics = UIFontMetrics(forTextStyle: .title3)
-                let boldFont = title3Metrics.scaledFont(for: UIFont.boldSystemFont(ofSize: 24))
-                
-                attributedName.addAttribute(.font, value: boldFont, range: NSRange(location: 0, length: profile.firstName.count))
-                
-                 // make sure the custom font scale to the desired size based on acessibility settings
-                let thinFont = title3Metrics.scaledFont(for: UIFont(name: "HelveticaNeue-Light", size: 24) ?? UIFont.systemFont(ofSize: 24))
-                attributedName.addAttribute(.font, value: thinFont, range: NSRange(location: profile.firstName.count + 1, length: profile.lastName.count))
-                
-                nameLabel.attributedText = attributedName
+                nameLabel.attributedText = fullName
                 titleLabel.text = profile.title
                 introductionLabel.text = profile.information
             }
         }
+    }
+    
+    private var fullName: NSMutableAttributedString {
+        if let profile = profile {
+            let descriptor = UIFont.preferredFont(forTextStyle: .title3)
+            let firstNameAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: descriptor.pointSize)]
+            let lastNameAttributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Light", size: descriptor.pointSize)!]
+            
+            let firstName = NSMutableAttributedString(string: profile.firstName, attributes: firstNameAttributes)
+            let space = NSMutableAttributedString(string: " ")
+            let lastName = NSMutableAttributedString(string: profile.lastName, attributes: lastNameAttributes)
+            
+            let fullName = NSMutableAttributedString()
+            fullName.append(firstName)
+            fullName.append(space)
+            fullName.append(lastName)
+            
+            return fullName
+        }
+        return NSMutableAttributedString(string: "")
+    }
+    
+    override func prepareForReuse() {
+        nameLabel.text = nil
+        titleLabel.text = nil
+        introductionLabel.text = nil
     }
     
     @IBOutlet private weak var nameLabel: UILabel!
