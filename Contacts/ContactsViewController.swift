@@ -104,8 +104,7 @@ extension ContactsViewController: UICollectionViewDataSource {
         if collectionView == profileImagecollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileImageCell", for: indexPath)
             if let profileImageCell = cell as? ProfileImageCollectionViewCell {
-                profileImageCell.profileImage.image = profile.profileImage
-                profileImageCell.profileImage.accessibilityLabel = profile.imageName
+                profileImageCell.profile = profile
                 profileImageCell.accessibilityIdentifier = "profile image cell at \(indexPath.row)"
             }
             return cell
@@ -114,23 +113,8 @@ extension ContactsViewController: UICollectionViewDataSource {
             
             if let profileInformationCell = cell as?
                 ProfileInformationCollectionViewCell {
-
-                let attributedName = NSMutableAttributedString(string: profile.firstName + " " + profile.lastName);
                 
-                // make sure the custom font scale to the desired size based on acessibility settings
-                let title3Metrics = UIFontMetrics(forTextStyle: .title3)
-                let boldFont = title3Metrics.scaledFont(for: UIFont.boldSystemFont(ofSize: 24))
-                
-                attributedName.addAttribute(.font, value: boldFont, range: NSRange(location: 0, length: profile.firstName.count))
-                
-                 // make sure the custom font scale to the desired size based on acessibility settings
-                let thinFont = title3Metrics.scaledFont(for: UIFont(name: "HelveticaNeue-Light", size: 24) ?? UIFont.systemFont(ofSize: 24))
-                attributedName.addAttribute(.font, value: thinFont, range: NSRange(location: profile.firstName.count + 1, length: profile.lastName.count))
-                
-                profileInformationCell.nameLabel.attributedText = attributedName
-                profileInformationCell.titleLabel.text = profile.title
-                profileInformationCell.introductionLabel.text = profile.information
-                
+                profileInformationCell.profile = profile
                 profileInformationCell.accessibilityIdentifier = "profile information cell at \(indexPath.row)"
             }
             return cell

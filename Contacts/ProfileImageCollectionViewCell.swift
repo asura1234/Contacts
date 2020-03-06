@@ -9,7 +9,19 @@
 import UIKit
 
 class ProfileImageCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var profileImage: UIImageView! { didSet {
+    var profile: Profile? {
+        didSet {
+            if let profile = profile, let image = UIImage(named: profile.imageName) {
+                    profileImage.image = image
+            } else {
+                // if there is no image in the bundle with that image name
+                // use a solid gray color image as placeholder
+                profileImage.image =  UIColor.gray.image()
+            }
+        }
+    }
+    
+    @IBOutlet private weak var profileImage: UIImageView! { didSet {
         profileImage.clipsToBounds = true
         profileImage.layer.masksToBounds = false
         profileImage.layer.cornerRadius = profileImage.frame.size.height/2
@@ -24,6 +36,10 @@ class ProfileImageCollectionViewCell: UICollectionViewCell {
     
     @IBInspectable
     var borderAlpha: CGFloat = 0.5
+    
+    override func prepareForReuse() {
+        profileImage.image = nil
+    }
     
     override func awakeFromNib() {
         self.clipsToBounds = true
@@ -41,6 +57,16 @@ class ProfileImageCollectionViewCell: UICollectionViewCell {
             } else {
                 self.layer.borderWidth = 0
             }
+        }
+    }
+}
+
+extension UIColor {
+    // generate a UIImage with solid color
+    func image(_ size: CGSize = CGSize(width: 85, height: 85)) -> UIImage {
+        return UIGraphicsImageRenderer(size: size).image { renderContext in
+            self.setFill()
+            renderContext.fill(CGRect(origin: .zero, size: size))
         }
     }
 }

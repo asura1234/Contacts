@@ -24,26 +24,3 @@ struct Profile : Codable {
         case information = "introduction"
     }
 }
-
-extension UIColor {
-    // generate a UIImage with solid color
-    func image(_ size: CGSize = CGSize(width: 85, height: 85)) -> UIImage {
-        return UIGraphicsImageRenderer(size: size).image { renderContext in
-            self.setFill()
-            renderContext.fill(CGRect(origin: .zero, size: size))
-        }
-    }
-}
-
-extension Profile {
-    // extract the UIImage from bundle using the image name
-    var profileImage: UIImage {
-        if let image = UIImage(named: imageName) {
-            return image
-        } else {
-            // if there is no image in the bundle with that image name
-            // use a solid gray color image as placeholder
-            return UIColor.gray.image()
-        }
-    }
-}
