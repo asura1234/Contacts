@@ -9,6 +9,11 @@
 import UIKit
 
 class ProfileInformationCollectionViewCell: UICollectionViewCell {
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var aboutMeLabel: UILabel!
+    @IBOutlet private weak var introductionLabel: UILabel!
+    
     var profile: Profile? {
         didSet {
             if let profile = profile {
@@ -44,9 +49,4 @@ class ProfileInformationCollectionViewCell: UICollectionViewCell {
         titleLabel.text = nil
         introductionLabel.text = nil
     }
-    
-    @IBOutlet private weak var nameLabel: UILabel!
-    @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var aboutMeLabel: UILabel!
-    @IBOutlet private weak var introductionLabel: UILabel!
 }

@@ -9,6 +9,13 @@
 import UIKit
 
 class ProfileImageCollectionViewCell: UICollectionViewCell {
+    @IBOutlet private weak var profileImage: UIImageView! { didSet {
+        profileImage.clipsToBounds = true
+        profileImage.layer.masksToBounds = false
+        profileImage.layer.cornerRadius = profileImage.frame.size.height/2
+        }
+    }
+    
     var profile: Profile? {
         didSet {
             if let profile = profile, let image = UIImage(named: profile.imageName) {
@@ -18,13 +25,6 @@ class ProfileImageCollectionViewCell: UICollectionViewCell {
                 // use a solid gray color image as placeholder
                 profileImage.image =  UIColor.gray.image()
             }
-        }
-    }
-    
-    @IBOutlet private weak var profileImage: UIImageView! { didSet {
-        profileImage.clipsToBounds = true
-        profileImage.layer.masksToBounds = false
-        profileImage.layer.cornerRadius = profileImage.frame.size.height/2
         }
     }
     

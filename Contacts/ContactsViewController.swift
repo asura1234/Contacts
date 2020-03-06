@@ -99,9 +99,12 @@ extension ContactsViewController: UICollectionViewDataSource {
         return profiles.count
     }
     
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let profile = profiles[indexPath.item]
-        if collectionView == profileImagecollectionView {
+        
+        switch collectionView {
+        case profileImagecollectionView:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileImageCell", for: indexPath)
             if let profileImageCell = cell as? ProfileImageCollectionViewCell {
                 profileImageCell.profile = profile
@@ -109,7 +112,7 @@ extension ContactsViewController: UICollectionViewDataSource {
 
             }
             return cell
-        } else {
+        case profileInformationCollectionView:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileInformationCell", for: indexPath)
             
             if let profileInformationCell = cell as?
@@ -119,6 +122,8 @@ extension ContactsViewController: UICollectionViewDataSource {
                 profileInformationCell.accessibilityIdentifier = "profile information cell at \(indexPath.row)"
             }
             return cell
+        default:
+            fatalError("Invalid collection view type")
         }
     }
 }
@@ -154,14 +159,17 @@ extension ContactsViewController: UICollectionViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         // synchronize scrolling between the two collection views
-        if scrollView == profileImagecollectionView {
+        switch scrollView {
+        case profileImagecollectionView:
             let percentage = profileImagecollectionView.contentOffset.x / (profileImagecollectionView.contentSize.width - 2*padding + profileImageLayout.minimumLineSpacing)
             let y = (profileInformationCollectionView.contentSize.height) * percentage
             profileInformationCollectionView.contentOffset = CGPoint(x: 0, y: y)
-        } else if scrollView == profileInformationCollectionView {
+        case profileInformationCollectionView:
             let percentage = (profileInformationCollectionView.contentOffset.y) / (profileInformationCollectionView.contentSize.height)
             let x = (profileImagecollectionView.contentSize.width - 2*padding + profileImageLayout.minimumLineSpacing) * percentage
             profileImagecollectionView.contentOffset = CGPoint(x: CGFloat(x), y: 0)
+        default:
+            break
         }
         
         // print out the contentOffset and index
