@@ -30,7 +30,7 @@ class ContactsViewController: UIViewController {
         // for the first item and last item in the profile image collection view
         // to be able to scroll to the center of the collection view,
         // there needs to be padding added on either side of the content
-        profileImagecollectionView.frame = shadowView.bounds
+        shadowView.layoutSubviews()
         profileImageLayout.scrollDirection = .horizontal
         profileImageLayout.itemSize = CGSize(width: profileImageCellSize, height: profileImageCellSize)
         profileImageLayout.minimumLineSpacing = profileImageCellSpacing
@@ -147,6 +147,8 @@ extension ContactsViewController: UICollectionViewDelegate {
         
         // to verify that the scrolling animation stop at the right place
         assert(checkScrollingAnimationStop(), "Scrolling animation did not end with the middle profile image cell centered and the profile information screen in full view. ")
+        
+        assert(checkSynchronization(), "Scrolling are not synchronized between the two collection views.")
     }
     
     func checkSynchronization() -> Bool {
