@@ -12,7 +12,13 @@ class ProfileInfoCell: UICollectionViewCell {
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var aboutMeLabel: UILabel!
-    @IBOutlet private weak var introductionLabel: UILabel!
+    @IBOutlet private weak var introductionLabel: UILabel! {
+        didSet {
+            // dynamically adjust font size to fit the text on screen
+            introductionLabel.adjustsFontSizeToFitWidth = true
+            introductionLabel.minimumScaleFactor = 0.5
+        }
+    }
     
     var profile: Profile? {
         didSet {
