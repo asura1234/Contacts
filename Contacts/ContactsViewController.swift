@@ -60,10 +60,10 @@ class ContactsViewController: UIViewController {
             if let profiles = try? decoder.decode([Profile].self, from: data) {
                 self.profiles = profiles
             } else {
-                print("Not able to decode contacts.json file. ")
+                preconditionFailure("Not able to decode contacts.json file. ")
             }
         } else {
-            print("Not able to locate contacts.json file in the bundle.")
+            preconditionFailure("Not able to locate contacts.json file in the bundle.")
         }
         
         // setup profile image collection view
@@ -146,6 +146,16 @@ extension ContactsViewController: UICollectionViewDelegate {
         })
     }
     
+    func checkScrollingAnimationStop() -> Bool {
+        let imageOffsetPercentage = (profileImagecollectionView.contentOffset.x / (profileImageLayout.itemSize.width + profileImageLayout.minimumLineSpacing) * 10).rounded() / 10
+        let isInteger1 = floor(imageOffsetPercentage) == imageOffsetPercentage
+        
+        let infoOffSetPercentage = (profileInformationCollectionView.contentOffset.y / profileInformationLayout.itemSize.height * 10).rounded() / 10
+        let isInteger2 = floor(infoOffSetPercentage) == infoOffSetPercentage
+        
+        return imageOffsetPercentage == infoOffSetPercentage && isInteger1 && isInteger2
+    }
+    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         // hide the shadow under the image collection view
         UIView.transition(
@@ -155,6 +165,15 @@ extension ContactsViewController: UICollectionViewDelegate {
         animations: {
             self.profileImagecollectionView.layer.shadowOpacity = 0
         })
+        
+        // to verify that the scrolling animation stop at the right place
+        assert(checkScrollingAnimationStop(), "Scrolling animation did not end with the middle profile image cell centered and the profile information screen in full view. ")
+    }
+    
+    func checkSynchronization() -> Bool {
+        let imageOffsetPercentage = (profileImagecollectionView.contentOffset.x / (profileImageLayout.itemSize.width + profileImageLayout.minimumLineSpacing) * 10).rounded() / 10
+        let infoOffSetPercentage = (profileInformationCollectionView.contentOffset.y / profileInformationLayout.itemSize.height * 10).rounded() / 10
+        return imageOffsetPercentage == infoOffSetPercentage
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -172,14 +191,16 @@ extension ContactsViewController: UICollectionViewDelegate {
             break
         }
         
-        // print out the contentOffset and index
-        // to verify the two collection views are scrolling in sync
-        #if DEBUG
+        // print out the contentOffset and percentage
+        /*#if DEBUG
         print("Profile Image View Content Offset")
-        print("x: \(profileImagecollectionView.contentOffset.x), index: \((profileImagecollectionView.contentOffset.x / (profileImageLayout.itemSize.width + profileImageLayout.minimumLineSpacing) * 10).rounded() / 10)")
+        print("x: \(profileImagecollectionView.contentOffset.x), percentage: \((profileImagecollectionView.contentOffset.x / (profileImageLayout.itemSize.width + profileImageLayout.minimumLineSpacing) * 10).rounded() / 10)")
         print("Profile Information View Content Offset")
-        print("x: \(profileInformationCollectionView.contentOffset.y), index: \((profileInformationCollectionView.contentOffset.y / profileInformationLayout.itemSize.height * 10).rounded() / 10)")
-        #endif
+        print("x: \(profileInformationCollectionView.contentOffset.y), percentage: \((profileInformationCollectionView.contentOffset.y / profileInformationLayout.itemSize.height * 10).rounded() / 10)")
+        #endif*/
+        
+        // to verify the two collection views are scrolling in sync
+        assert(checkSynchronization(), "Scrolling are not synchronized between the two collection views.")
         
         // update the selection in the profile image collection view based on
         // which item is currently in the center of the profile information collection view
