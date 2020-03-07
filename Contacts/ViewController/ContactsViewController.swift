@@ -169,7 +169,7 @@ extension ContactsViewController: UICollectionViewDelegate {
         let imageOffsetPercentage = (profileImagecollectionView.contentOffset.x / (profileImageLayout.itemSize.width + profileImageLayout.minimumLineSpacing) * 10).rounded() / 10
         let infoOffSetPercentage = (profileInformationCollectionView.contentOffset.y / profileInformationLayout.itemSize.height * 10).rounded() / 10
 
-        let reuslt = imageOffsetPercentage == infoOffSetPercentage
+        let result = imageOffsetPercentage == infoOffSetPercentage
         if !result {
             printScrollPositions()
         }
