@@ -26,6 +26,7 @@ class ContactsViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
         // for the first item and last item in the profile image collection view
         // to be able to scroll to the center of the collection view,
         // there needs to be padding added on either side of the content
