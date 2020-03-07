@@ -136,7 +136,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="105" id="EBd-R1-TpB"/>
-                                    <constraint firstAttribute="bottom" secondItem="1Rx-bk-fQR" secondAttribute="bottom" id="WDM-1S-oRj"/>
+                                    <constraint firstItem="1Rx-bk-fQR" firstAttribute="bottom" secondItem="Ot5-qG-lWi" secondAttribute="bottom" id="WDM-1S-oRj"/>
                                     <constraint firstItem="1Rx-bk-fQR" firstAttribute="leading" secondItem="Ot5-qG-lWi" secondAttribute="leading" id="dmN-nS-rO2"/>
                                     <constraint firstItem="1Rx-bk-fQR" firstAttribute="top" secondItem="Ot5-qG-lWi" secondAttribute="top" id="mxd-Ax-PVv"/>
                                     <constraint firstAttribute="trailing" secondItem="1Rx-bk-fQR" secondAttribute="trailing" id="wKz-sm-O6j"/>
