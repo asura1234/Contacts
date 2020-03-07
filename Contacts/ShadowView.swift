@@ -11,10 +11,10 @@ import UIKit
 class ShadowView: UIView {
 
     func fadeIn() {
-        UIView.transition(
-            with: self,
-            duration: 0.5,
-            options:[.beginFromCurrentState, .curveEaseInOut],
+        UIViewPropertyAnimator.runningPropertyAnimator(
+            withDuration: 0.5,
+            delay: 0,
+            options: [.beginFromCurrentState, .curveEaseInOut],
             animations: {
                 self.layer.shadowOpacity = 0.2
             }
@@ -22,9 +22,9 @@ class ShadowView: UIView {
     }
     
     func fadeOut() {
-        UIView.transition(
-            with: self,
-            duration: 0.5,
+        UIViewPropertyAnimator.runningPropertyAnimator(
+            withDuration: 0.5,
+            delay: 0,
             options: [.beginFromCurrentState, .curveEaseInOut],
             animations: {
                 self.layer.shadowOpacity = 0
