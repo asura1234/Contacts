@@ -102,7 +102,6 @@
 		8AA62CC623C0F5E00040E8A5 /* ProfileInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA62CC523C0F5E00040E8A5 /* ProfileInfoCell.swift */; };
 		8AA62CCC23C24B300040E8A5 /* ProfileImageCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA62CCB23C24B300040E8A5 /* ProfileImageCollectionLayout.swift */; };
 		8AB2682D23BFA07000D94AE4 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB2682C23BFA07000D94AE4 /* Profile.swift */; };
-		8AB2683123BFAC2200D94AE4 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB2683023BFAC2200D94AE4 /* Resources.swift */; };
 		8AB2683323BFF8B000D94AE4 /* ProfileImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB2683223BFF8B000D94AE4 /* ProfileImageCell.swift */; };
 		8AFF20A923FF1310006A81EE /* JsonParsingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFF20A823FF1310006A81EE /* JsonParsingTest.swift */; };
 		8AFF20B023FF1320006A81EE /* contacts.json in Resources */ = {isa = PBXBuildFile; fileRef = 8AA62C6C23C0D9000040E8A5 /* contacts.json */; };
@@ -223,8 +222,7 @@
 		8AA62C6F23C0D9000040E8A5 /* Colin Ballinger@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Colin Ballinger@3x.png"; sourceTree = "<group>"; };
 		8AA62CC523C0F5E00040E8A5 /* ProfileInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoCell.swift; sourceTree = "<group>"; };
 		8AA62CCB23C24B300040E8A5 /* ProfileImageCollectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageCollectionLayout.swift; sourceTree = "<group>"; };
-		8AB2682C23BFA07000D94AE4 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Profile.swift; path = Contacts/Profile.swift; sourceTree = SOURCE_ROOT; };
-		8AB2683023BFAC2200D94AE4 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
+		8AB2682C23BFA07000D94AE4 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Profile.swift; path = Contacts/Model/Profile.swift; sourceTree = SOURCE_ROOT; };
 		8AB2683223BFF8B000D94AE4 /* ProfileImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageCell.swift; sourceTree = "<group>"; };
 		8AFF20A623FF1310006A81EE /* JsonParsingTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JsonParsingTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AFF20A823FF1310006A81EE /* JsonParsingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonParsingTest.swift; sourceTree = "<group>"; };
@@ -259,6 +257,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A330E0F24135B6600E092A7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8AB2682C23BFA07000D94AE4 /* Profile.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8A330E1024135B8E00E092A7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8A34BFF223BF96B5006B560E /* Main.storyboard */,
+				8A330E0D2413343D00E092A7 /* ShadowView.swift */,
+				8AA62CCB23C24B300040E8A5 /* ProfileImageCollectionLayout.swift */,
+				8AB2683223BFF8B000D94AE4 /* ProfileImageCell.swift */,
+				8AA62CC523C0F5E00040E8A5 /* ProfileInfoCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8A330E1124135BBC00E092A7 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8A34BFF023BF96B5006B560E /* ContactsViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		8A34BFE023BF96B5006B560E = {
 			isa = PBXGroup;
 			children = (
@@ -282,14 +308,9 @@
 		8A34BFEB23BF96B5006B560E /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
-				8AA62CCB23C24B300040E8A5 /* ProfileImageCollectionLayout.swift */,
-				8AB2683223BFF8B000D94AE4 /* ProfileImageCell.swift */,
-				8AA62CC523C0F5E00040E8A5 /* ProfileInfoCell.swift */,
-				8A34BFF023BF96B5006B560E /* ContactsViewController.swift */,
-				8A34BFF223BF96B5006B560E /* Main.storyboard */,
-				8A330E0D2413343D00E092A7 /* ShadowView.swift */,
-				8AB2682C23BFA07000D94AE4 /* Profile.swift */,
-				8AB2683023BFAC2200D94AE4 /* Resources.swift */,
+				8A330E0F24135B6600E092A7 /* Model */,
+				8A330E1024135B8E00E092A7 /* View */,
+				8A330E1124135BBC00E092A7 /* ViewController */,
 				8A34BFFA23BF96B7006B560E /* Info.plist */,
 				8AA62C1A23C0D9000040E8A5 /* Resources */,
 				8A34C00023BF9722006B560E /* Supporting Files */,
@@ -640,7 +661,6 @@
 				8AA62CCC23C24B300040E8A5 /* ProfileImageCollectionLayout.swift in Sources */,
 				8A34BFF123BF96B5006B560E /* ContactsViewController.swift in Sources */,
 				8AA62CC623C0F5E00040E8A5 /* ProfileInfoCell.swift in Sources */,
-				8AB2683123BFAC2200D94AE4 /* Resources.swift in Sources */,
 				8AB2682D23BFA07000D94AE4 /* Profile.swift in Sources */,
 				8A34BFED23BF96B5006B560E /* AppDelegate.swift in Sources */,
 				8A34BFEF23BF96B5006B560E /* SceneDelegate.swift in Sources */,

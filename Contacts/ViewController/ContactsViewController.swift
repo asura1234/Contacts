@@ -54,7 +54,7 @@ class ContactsViewController: UIViewController {
         navigationItem.title = "Contacts"
         
         // deserialize the contacts.json file to an array of ContactPerson Objects
-        if let path = Resources.contactsJsonPath, let data = try? Data(contentsOf: URL(fileURLWithPath: path)) {
+        if let path = Bundle.main.path(forResource: "contacts", ofType: "json"), let data = try? Data(contentsOf: URL(fileURLWithPath: path)) {
             let decoder = JSONDecoder()
             if let profiles = try? decoder.decode([Profile].self, from: data) {
                 self.profiles = profiles
