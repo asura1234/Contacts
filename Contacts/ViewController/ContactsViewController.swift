@@ -146,11 +146,15 @@ extension ContactsViewController: UICollectionViewDelegate {
         let isInteger2 = floor(infoOffSetPercentage) == infoOffSetPercentage
         
         let result = imageOffsetPercentage == infoOffSetPercentage && isInteger1 && isInteger2
-        
         if !result {
             printScrollPositions()
         }
         return result
+    }
+    
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        // to verify that the scrolling animation stop at the right place
+        assert(checkScrollingAnimationStop(), "Scrolling animation did not end with the middle profile image cell centered and the profile information screen in full view. ")
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -164,14 +168,12 @@ extension ContactsViewController: UICollectionViewDelegate {
     func checkSynchronization() -> Bool {
         let imageOffsetPercentage = (profileImagecollectionView.contentOffset.x / (profileImageLayout.itemSize.width + profileImageLayout.minimumLineSpacing) * 10).rounded() / 10
         let infoOffSetPercentage = (profileInformationCollectionView.contentOffset.y / profileInformationLayout.itemSize.height * 10).rounded() / 10
-        
-        let diff = abs(imageOffsetPercentage - infoOffSetPercentage)
-        let SYNC_THRESHOLD: CGFloat =  0.2
-        
-        if diff > SYNC_THRESHOLD {
+
+        let reuslt = imageOffsetPercentage == infoOffSetPercentage
+        if !result {
             printScrollPositions()
         }
-        return diff <= SYNC_THRESHOLD
+        return result
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -190,7 +192,7 @@ extension ContactsViewController: UICollectionViewDelegate {
         }
         
         // to verify the two collection views are scrolling in sync
-        assert(checkSynchronization(), "Scrolling are not synchronized between the two collection views.")
+        //assert(checkSynchronization(), "Scrolling are not synchronized between the two collection views.")
         
         // update the selection in the profile image collection view based on
         // which item is currently in the center of the profile information collection view

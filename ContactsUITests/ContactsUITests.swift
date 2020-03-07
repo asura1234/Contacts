@@ -31,8 +31,7 @@ class ContactsUITests: XCTestCase {
         
         let profileImageCollectionView = app.collectionViews["profile image collection view"]
         let profileInformationCollectionView = app.collectionViews["profile information collection view"]
-        
-        XCTAssertTrue(waitForElementToAppear(profileInformationCollectionView/*@START_MENU_TOKEN@*/.staticTexts["Allan Munger"]/*[[".cells[\"profile information cell at 0\"].staticTexts[\"Allan Munger\"]",".staticTexts[\"Allan Munger\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/))
+    XCTAssertTrue(waitForElementToAppear(profileInformationCollectionView/*@START_MENU_TOKEN@*/.staticTexts["Allan Munger"]/*[[".cells[\"profile information cell at 0\"].staticTexts[\"Allan Munger\"]",".staticTexts[\"Allan Munger\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/))
         
         profileImageCollectionView.cells["profile image cell at 1"].tap()
         XCTAssertTrue(waitForElementToAppear(profileInformationCollectionView.staticTexts["Amanda Brady"]))
@@ -59,14 +58,25 @@ class ContactsUITests: XCTestCase {
         XCTAssertTrue(waitForElementToAppear(profileInformationCollectionView/*@START_MENU_TOKEN@*/.staticTexts["Allan Munger"]/*[[".cells[\"profile information cell at 0\"].staticTexts[\"Allan Munger\"]",".staticTexts[\"Allan Munger\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/))
     }
     
+    
     func testScrollingOnProfileImageSection() {
         let app = XCUIApplication()
         app.launch()
         
         let profileImageCollectionView = app.collectionViews["profile image collection view"]
         
+        // the asserts in the view controller will trigger
+        // if anything goes wrong
         profileImageCollectionView/*@START_MENU_TOKEN@*/.swipeLeft()/*[[".swipeUp()",".swipeLeft()"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        profileImageCollectionView.swipeLeft()
+        profileImageCollectionView.swipeLeft()
+        profileImageCollectionView.swipeLeft()
+        
         profileImageCollectionView.swipeRight()
+        profileImageCollectionView.swipeRight()
+        profileImageCollectionView.swipeRight()
+        profileImageCollectionView.swipeRight()
+        
         profileImageCollectionView.swipeLeft()
         profileImageCollectionView.swipeRight()
         profileImageCollectionView.swipeLeft()
@@ -113,8 +123,27 @@ class ContactsUITests: XCTestCase {
         XCTAssertTrue(profileImageCollectionView.cells["profile image cell at 0"].isSelected)
     }
     
-    func combinationTest() {
+    func testCombination() {
         let app = XCUIApplication()
         app.launch()
+        
+        let profileImageCollectionView = app.collectionViews["profile image collection view"]
+        let profileInformationCollectionView = app.collectionViews["profile information collection view"]
+        // the asserts in the view controller will trigger
+        // if anything goes wrong
+        profileImageCollectionView.cells["profile image cell at 1"].tap()
+        profileImageCollectionView.cells["profile image cell at 2"].tap()
+        profileImageCollectionView.cells["profile image cell at 3"].tap()
+        profileImageCollectionView.cells["profile image cell at 4"].tap()
+        
+        profileImageCollectionView.swipeLeft()
+        profileImageCollectionView.swipeLeft()
+        profileImageCollectionView.swipeRight()
+        profileImageCollectionView.swipeRight()
+        
+        profileInformationCollectionView.swipeUp()
+        profileInformationCollectionView.swipeUp()
+        profileInformationCollectionView.swipeDown()
+        profileInformationCollectionView.swipeDown()
     }
 }
