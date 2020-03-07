@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7pO-R1-EIF">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -52,19 +52,19 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Writer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1co-IE-IHq">
-                                                    <rect key="frame" x="183.5" y="45" width="47" height="21"/>
+                                                    <rect key="frame" x="183.66666666666666" y="45" width="47" height="21"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About me" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xLL-Xo-JIl">
-                                                    <rect key="frame" x="20" y="74" width="77.5" height="21"/>
+                                                    <rect key="frame" x="20" y="74" width="77.666666666666671" height="21"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ljC-X8-bPU">
-                                                    <rect key="frame" x="20" y="103" width="374" height="284.5"/>
+                                                    <rect key="frame" x="20" y="103" width="374" height="284.33333333333331"/>
                                                     <string key="text">Ut malesuada sollicitudin tincidunt. Maecenas volutpat suscipit efficitur. Curabitur ut tortor sit amet lacus pellentesque convallis in laoreet lectus. Curabitur lorem velit, bibendum et vulputate vulputate, commodo in tortor. Curabitur a dapibus mauris. Vestibulum hendrerit euismod felis at hendrerit. Pellentesque imperdiet volutpat molestie. Nam vehicula dui eu consequat finibus. Phasellus sed placerat lorem. Nulla pretium a magna sit amet iaculis. Aenean eget eleifend elit. Ut eleifend aliquet interdum. Cras pulvinar elit a dapibus iaculis. Nullam fermentum porttitor ultrices.</string>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -97,8 +97,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ot5-qG-lWi" customClass="ShadowView" customModule="Contacts" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="88" width="414" height="105"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1Rx-bk-fQR">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1Rx-bk-fQR">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="105"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5mm-sG-aCa">
                                             <size key="itemSize" width="80" height="80"/>
@@ -108,7 +109,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="ProfileImageCell" id="XuX-gq-h6U" customClass="ProfileImageCell" customModule="Contacts" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="12.5" width="80" height="80"/>
+                                                <rect key="frame" x="0.0" y="12.666666666666666" width="80" height="80"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="PjE-4I-6Xv">
                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
@@ -135,23 +136,19 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="1Rx-bk-fQR" firstAttribute="leading" secondItem="Ot5-qG-lWi" secondAttribute="leading" id="Xpx-x7-jWC"/>
-                                    <constraint firstAttribute="bottom" secondItem="1Rx-bk-fQR" secondAttribute="bottom" id="Xs9-Pe-uII"/>
-                                    <constraint firstAttribute="height" constant="105" id="ab0-Dq-Pmy"/>
-                                    <constraint firstAttribute="trailing" secondItem="1Rx-bk-fQR" secondAttribute="trailing" id="hML-3r-Oqo"/>
-                                    <constraint firstItem="1Rx-bk-fQR" firstAttribute="top" secondItem="Ot5-qG-lWi" secondAttribute="top" id="twy-yf-nGS"/>
+                                    <constraint firstAttribute="height" constant="105" id="EBd-R1-TpB"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Ot5-qG-lWi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="AB4-zw-EOB"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ot5-qG-lWi" secondAttribute="trailing" id="Jtd-fY-mGg"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="oLB-h6-Rsm" secondAttribute="bottom" constant="-34" id="IHa-Xs-Q2N"/>
+                            <constraint firstItem="Ot5-qG-lWi" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="Nbd-dY-Oql"/>
                             <constraint firstItem="oLB-h6-Rsm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Oul-qf-WkT"/>
                             <constraint firstItem="oLB-h6-Rsm" firstAttribute="top" secondItem="Ot5-qG-lWi" secondAttribute="bottom" constant="8" id="RFy-8k-xAe"/>
                             <constraint firstItem="oLB-h6-Rsm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Tv5-nM-YUK"/>
-                            <constraint firstItem="Ot5-qG-lWi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="btt-LV-sF8"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="oLB-h6-Rsm" secondAttribute="bottom" constant="-34" id="mrE-DA-bTd"/>
+                            <constraint firstItem="Ot5-qG-lWi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="j3s-UW-uwS"/>
+                            <constraint firstItem="Ot5-qG-lWi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="nLp-OT-dBA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

@@ -29,6 +29,7 @@ class ContactsViewController: UIViewController {
         // for the first item and last item in the profile image collection view
         // to be able to scroll to the center of the collection view,
         // there needs to be padding added on either side of the content
+        profileImagecollectionView.frame = shadowView.bounds
         profileImageLayout.scrollDirection = .horizontal
         profileImageLayout.itemSize = CGSize(width: profileImageCellSize, height: profileImageCellSize)
         profileImageLayout.minimumLineSpacing = profileImageCellSpacing
@@ -150,7 +151,16 @@ extension ContactsViewController: UICollectionViewDelegate {
     func checkSynchronization() -> Bool {
         let imageOffsetPercentage = (profileImagecollectionView.contentOffset.x / (profileImageLayout.itemSize.width + profileImageLayout.minimumLineSpacing) * 10).rounded() / 10
         let infoOffSetPercentage = (profileInformationCollectionView.contentOffset.y / profileInformationLayout.itemSize.height * 10).rounded() / 10
-        return imageOffsetPercentage == infoOffSetPercentage
+        
+        let diff = abs(imageOffsetPercentage - infoOffSetPercentage)
+        
+        if diff > 0.2 {
+            print("Profile Image View Content Offset")
+            print("x: \(profileImagecollectionView.contentOffset.x), percentage: \((profileImagecollectionView.contentOffset.x / (profileImageLayout.itemSize.width + profileImageLayout.minimumLineSpacing) * 10).rounded() / 10)")
+            print("Profile Information View Content Offset")
+            print("x: \(profileInformationCollectionView.contentOffset.y), percentage: \((profileInformationCollectionView.contentOffset.y / profileInformationLayout.itemSize.height * 10).rounded() / 10)")
+        }
+        return diff <= 0.2
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -167,14 +177,6 @@ extension ContactsViewController: UICollectionViewDelegate {
         default:
             break
         }
-        
-        // print out the contentOffset and percentage
-        /*#if DEBUG
-        print("Profile Image View Content Offset")
-        print("x: \(profileImagecollectionView.contentOffset.x), percentage: \((profileImagecollectionView.contentOffset.x / (profileImageLayout.itemSize.width + profileImageLayout.minimumLineSpacing) * 10).rounded() / 10)")
-        print("Profile Information View Content Offset")
-        print("x: \(profileInformationCollectionView.contentOffset.y), percentage: \((profileInformationCollectionView.contentOffset.y / profileInformationLayout.itemSize.height * 10).rounded() / 10)")
-        #endif*/
         
         // to verify the two collection views are scrolling in sync
         assert(checkSynchronization(), "Scrolling are not synchronized between the two collection views.")
