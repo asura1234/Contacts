@@ -1,5 +1,5 @@
 //
-//  ProfileImageCollectionViewCell.swift
+//  ProfileImageCell.swift
 //  Contacts
 //
 //  Created by Yang Liu on 1/3/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileImageCollectionViewCell: UICollectionViewCell {
+class ProfileImageCell: UICollectionViewCell {
     @IBOutlet private weak var profileImage: UIImageView! { didSet {
         profileImage.clipsToBounds = true
         profileImage.layer.masksToBounds = false

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileInformationCollectionViewCell: UICollectionViewCell {
+class ProfileInfoCell: UICollectionViewCell {
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var aboutMeLabel: UILabel!

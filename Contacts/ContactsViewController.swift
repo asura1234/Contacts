@@ -95,7 +95,7 @@ extension ContactsViewController: UICollectionViewDataSource {
         switch collectionView {
         case profileImagecollectionView:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileImageCell", for: indexPath)
-            if let profileImageCell = cell as? ProfileImageCollectionViewCell {
+            if let profileImageCell = cell as? ProfileImageCell {
                 profileImageCell.profile = profile
                 profileImageCell.accessibilityIdentifier = "profile image cell at \(indexPath.row)"
 
@@ -105,7 +105,7 @@ extension ContactsViewController: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileInformationCell", for: indexPath)
             
             if let profileInformationCell = cell as?
-                ProfileInformationCollectionViewCell {
+                ProfileInfoCell {
                 
                 profileInformationCell.profile = profile
                 profileInformationCell.accessibilityIdentifier = "profile information cell at \(indexPath.row)"
