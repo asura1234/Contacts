@@ -131,6 +131,13 @@ extension ContactsViewController: UICollectionViewDelegate {
         shadowView.fadeIn()
     }
     
+    func printScrollPositions() {
+        print("Profile Image View Content Offset")
+        print("x: \(profileImagecollectionView.contentOffset.x), percentage: \((profileImagecollectionView.contentOffset.x / (profileImageLayout.itemSize.width + profileImageLayout.minimumLineSpacing) * 10).rounded() / 10)")
+        print("Profile Information View Content Offset")
+        print("x: \(profileInformationCollectionView.contentOffset.y), percentage: \((profileInformationCollectionView.contentOffset.y / profileInformationLayout.itemSize.height * 10).rounded() / 10)")
+    }
+    
     func checkScrollingAnimationStop() -> Bool {
         let imageOffsetPercentage = (profileImagecollectionView.contentOffset.x / (profileImageLayout.itemSize.width + profileImageLayout.minimumLineSpacing) * 10).rounded() / 10
         let isInteger1 = floor(imageOffsetPercentage) == imageOffsetPercentage
@@ -141,10 +148,7 @@ extension ContactsViewController: UICollectionViewDelegate {
         let result = imageOffsetPercentage == infoOffSetPercentage && isInteger1 && isInteger2
         
         if !result {
-            print("Profile Image View Content Offset")
-            print("x: \(profileImagecollectionView.contentOffset.x), percentage: \((profileImagecollectionView.contentOffset.x / (profileImageLayout.itemSize.width + profileImageLayout.minimumLineSpacing) * 10).rounded() / 10)")
-            print("Profile Information View Content Offset")
-            print("x: \(profileInformationCollectionView.contentOffset.y), percentage: \((profileInformationCollectionView.contentOffset.y / profileInformationLayout.itemSize.height * 10).rounded() / 10)")
+            printScrollPositions()
         }
         return result
     }
@@ -165,10 +169,7 @@ extension ContactsViewController: UICollectionViewDelegate {
         let SYNC_THRESHOLD: CGFloat =  0.2
         
         if diff > SYNC_THRESHOLD {
-            print("Profile Image View Content Offset")
-            print("x: \(profileImagecollectionView.contentOffset.x), percentage: \((profileImagecollectionView.contentOffset.x / (profileImageLayout.itemSize.width + profileImageLayout.minimumLineSpacing) * 10).rounded() / 10)")
-            print("Profile Information View Content Offset")
-            print("x: \(profileInformationCollectionView.contentOffset.y), percentage: \((profileInformationCollectionView.contentOffset.y / profileInformationLayout.itemSize.height * 10).rounded() / 10)")
+            printScrollPositions()
         }
         return diff <= SYNC_THRESHOLD
     }
