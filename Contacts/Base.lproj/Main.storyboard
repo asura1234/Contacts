@@ -16,44 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1Rx-bk-fQR">
-                                <rect key="frame" x="0.0" y="88" width="414" height="105"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="105" id="NBj-pa-Dsq"/>
-                                </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5mm-sG-aCa">
-                                    <size key="itemSize" width="80" height="80"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="ProfileImageCell" id="XuX-gq-h6U" customClass="ProfileImageCollectionViewCell" customModule="Contacts" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="12.5" width="80" height="80"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="PjE-4I-6Xv">
-                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Allan Munger.png" translatesAutoresizingMaskIntoConstraints="NO" id="d1S-02-YPt">
-                                                    <rect key="frame" x="5" y="5" width="70" height="70"/>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="d1S-02-YPt" firstAttribute="centerX" secondItem="PjE-4I-6Xv" secondAttribute="centerX" id="Qjl-nw-wwb"/>
-                                                <constraint firstItem="d1S-02-YPt" firstAttribute="height" secondItem="PjE-4I-6Xv" secondAttribute="height" constant="-10" id="UL5-cP-ADe"/>
-                                                <constraint firstItem="d1S-02-YPt" firstAttribute="width" secondItem="PjE-4I-6Xv" secondAttribute="width" constant="-10" id="XBr-Ag-aWx"/>
-                                                <constraint firstItem="d1S-02-YPt" firstAttribute="centerY" secondItem="PjE-4I-6Xv" secondAttribute="centerY" id="fNU-m0-Uob"/>
-                                            </constraints>
-                                        </collectionViewCellContentView>
-                                        <size key="customSize" width="80" height="80"/>
-                                        <connections>
-                                            <outlet property="profileImage" destination="d1S-02-YPt" id="jju-AT-5Gq"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oLB-h6-Rsm">
                                 <rect key="frame" x="0.0" y="201" width="414" height="695"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -132,16 +94,64 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ot5-qG-lWi" customClass="ShadowView" customModule="Contacts" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="88" width="414" height="105"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1Rx-bk-fQR">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="105"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5mm-sG-aCa">
+                                            <size key="itemSize" width="80" height="80"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="ProfileImageCell" id="XuX-gq-h6U" customClass="ProfileImageCollectionViewCell" customModule="Contacts" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="12.5" width="80" height="80"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="PjE-4I-6Xv">
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Allan Munger.png" translatesAutoresizingMaskIntoConstraints="NO" id="d1S-02-YPt">
+                                                            <rect key="frame" x="5" y="5" width="70" height="70"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="d1S-02-YPt" firstAttribute="centerX" secondItem="PjE-4I-6Xv" secondAttribute="centerX" id="Qjl-nw-wwb"/>
+                                                        <constraint firstItem="d1S-02-YPt" firstAttribute="height" secondItem="PjE-4I-6Xv" secondAttribute="height" constant="-10" id="UL5-cP-ADe"/>
+                                                        <constraint firstItem="d1S-02-YPt" firstAttribute="width" secondItem="PjE-4I-6Xv" secondAttribute="width" constant="-10" id="XBr-Ag-aWx"/>
+                                                        <constraint firstItem="d1S-02-YPt" firstAttribute="centerY" secondItem="PjE-4I-6Xv" secondAttribute="centerY" id="fNU-m0-Uob"/>
+                                                    </constraints>
+                                                </collectionViewCellContentView>
+                                                <size key="customSize" width="80" height="80"/>
+                                                <connections>
+                                                    <outlet property="profileImage" destination="d1S-02-YPt" id="jju-AT-5Gq"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="1Rx-bk-fQR" firstAttribute="leading" secondItem="Ot5-qG-lWi" secondAttribute="leading" id="Xpx-x7-jWC"/>
+                                    <constraint firstAttribute="bottom" secondItem="1Rx-bk-fQR" secondAttribute="bottom" id="Xs9-Pe-uII"/>
+                                    <constraint firstAttribute="height" constant="105" id="ab0-Dq-Pmy"/>
+                                    <constraint firstAttribute="trailing" secondItem="1Rx-bk-fQR" secondAttribute="trailing" id="hML-3r-Oqo"/>
+                                    <constraint firstItem="1Rx-bk-fQR" firstAttribute="top" secondItem="Ot5-qG-lWi" secondAttribute="top" id="twy-yf-nGS"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="1Rx-bk-fQR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="3mt-GJ-8Gy"/>
-                            <constraint firstItem="oLB-h6-Rsm" firstAttribute="top" secondItem="1Rx-bk-fQR" secondAttribute="bottom" constant="8" id="BBZ-zC-2dM"/>
+                            <constraint firstItem="Ot5-qG-lWi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="AB4-zw-EOB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ot5-qG-lWi" secondAttribute="trailing" id="Jtd-fY-mGg"/>
                             <constraint firstItem="oLB-h6-Rsm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Oul-qf-WkT"/>
+                            <constraint firstItem="oLB-h6-Rsm" firstAttribute="top" secondItem="Ot5-qG-lWi" secondAttribute="bottom" constant="8" id="RFy-8k-xAe"/>
                             <constraint firstItem="oLB-h6-Rsm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Tv5-nM-YUK"/>
-                            <constraint firstAttribute="bottom" secondItem="oLB-h6-Rsm" secondAttribute="bottom" id="mrE-DA-bTd"/>
-                            <constraint firstItem="1Rx-bk-fQR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="s6Z-uf-AUB"/>
-                            <constraint firstItem="1Rx-bk-fQR" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="tQF-a3-cnl"/>
+                            <constraint firstItem="Ot5-qG-lWi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="btt-LV-sF8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="oLB-h6-Rsm" secondAttribute="bottom" constant="-34" id="mrE-DA-bTd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -149,6 +159,7 @@
                     <connections>
                         <outlet property="profileImagecollectionView" destination="1Rx-bk-fQR" id="gko-wU-ksL"/>
                         <outlet property="profileInformationCollectionView" destination="oLB-h6-Rsm" id="cOV-cx-R5l"/>
+                        <outlet property="shadowView" destination="Ot5-qG-lWi" id="Kbq-ff-Hfn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

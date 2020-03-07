@@ -12,6 +12,7 @@ class ContactsViewController: UIViewController {
     
     @IBOutlet weak var profileImagecollectionView: UICollectionView!
     @IBOutlet weak var profileInformationCollectionView: UICollectionView!
+    @IBOutlet weak var shadowView: ShadowView!
     
     var profiles: [Profile] = []
     var selectedIndex: Int = 0
@@ -32,10 +33,6 @@ class ContactsViewController: UIViewController {
         profileImageLayout.itemSize = CGSize(width: profileImageCellSize, height: profileImageCellSize)
         profileImageLayout.minimumLineSpacing = profileImageCellSpacing
         profileImageLayout.sectionInset = UIEdgeInsets(top: 0,left: padding ,bottom: 0,right: padding)
-        
-        // the shadow scrolls with the items inside profile image collection view
-        // so I had to make it really wide ...
-        profileImagecollectionView.layer.shadowPath = UIBezierPath(rect: CGRect(origin: CGPoint(x: -padding, y: 0), size: CGSize(width: profileImagecollectionView.contentSize.width + 2*padding, height: profileImagecollectionView.frame.height))).cgPath
         
         // for paging to work correctly:
         // (1) each item should take up the entire screen space avaialble
@@ -73,13 +70,6 @@ class ContactsViewController: UIViewController {
         profileImagecollectionView.collectionViewLayout = profileImageLayout
         profileImagecollectionView.accessibilityIdentifier = "profile image collection view"
         
-        // setup the shadow under the image collection view
-        profileImagecollectionView.layer.shadowColor = UIColor.gray.cgColor
-        profileImagecollectionView.layer.shadowRadius = 2
-        profileImagecollectionView.layer.shadowOffset = CGSize(width: 0, height: 3)
-        profileImagecollectionView.layer.shadowOpacity = 0
-        profileImagecollectionView.layer.masksToBounds = false
-        
         // setup profile information collection view
         profileInformationCollectionView.delegate = self
         profileInformationCollectionView.dataSource = self
@@ -99,7 +89,6 @@ extension ContactsViewController: UICollectionViewDataSource {
         return profiles.count
     }
     
-
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let profile = profiles[indexPath.item]
         
@@ -137,13 +126,7 @@ extension ContactsViewController: UICollectionViewDelegate {
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         // show the shadow under the image collection view
-        UIView.transition(
-        with: profileImagecollectionView,
-        duration: 0.5,
-        options: [.beginFromCurrentState, .curveEaseInOut],
-        animations: {
-            self.profileImagecollectionView.layer.shadowOpacity = 0.2
-        })
+        shadowView.fadeIn()
     }
     
     func checkScrollingAnimationStop() -> Bool {
@@ -158,13 +141,7 @@ extension ContactsViewController: UICollectionViewDelegate {
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         // hide the shadow under the image collection view
-        UIView.transition(
-        with: profileImagecollectionView,
-        duration: 0.5,
-        options: [.beginFromCurrentState, .curveEaseInOut],
-        animations: {
-            self.profileImagecollectionView.layer.shadowOpacity = 0
-        })
+        shadowView.fadeOut()
         
         // to verify that the scrolling animation stop at the right place
         assert(checkScrollingAnimationStop(), "Scrolling animation did not end with the middle profile image cell centered and the profile information screen in full view. ")
