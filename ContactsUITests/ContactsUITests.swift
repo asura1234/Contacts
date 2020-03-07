@@ -27,6 +27,7 @@ class ContactsUITests: XCTestCase {
 
     func testTappingOnProfileImage() {
         let app = XCUIApplication()
+        app.launchArguments.append("--UITest")
         app.launch()
         
         let profileImageCollectionView = app.collectionViews["profile image collection view"]
@@ -61,6 +62,7 @@ class ContactsUITests: XCTestCase {
     
     func testScrollingOnProfileImageSection() {
         let app = XCUIApplication()
+        app.launchArguments.append("--UITest")
         app.launch()
         
         let profileImageCollectionView = app.collectionViews["profile image collection view"]
@@ -85,6 +87,7 @@ class ContactsUITests: XCTestCase {
     
     func testPagingOnProfileInformationSection() {
         let app = XCUIApplication()
+        app.launchArguments.append("--UITest")
         app.launch()
         
         let profileImageCollectionView = app.collectionViews["profile image collection view"]
@@ -125,6 +128,7 @@ class ContactsUITests: XCTestCase {
     
     func testCombination() {
         let app = XCUIApplication()
+        app.launchArguments.append("--UITest")
         app.launch()
         
         let profileImageCollectionView = app.collectionViews["profile image collection view"]
@@ -132,9 +136,13 @@ class ContactsUITests: XCTestCase {
         // the asserts in the view controller will trigger
         // if anything goes wrong
         profileImageCollectionView.cells["profile image cell at 1"].tap()
+        let _ = waitForElementToAppear(profileInformationCollectionView.staticTexts["Amanda Brady"])
         profileImageCollectionView.cells["profile image cell at 2"].tap()
+        let _ = waitForElementToAppear(profileInformationCollectionView/*@START_MENU_TOKEN@*/.staticTexts["Ashley Mc Carthy"]/*[[".cells[\"profile information cell at 2\"].staticTexts[\"Ashley Mc Carthy\"]",".staticTexts[\"Ashley Mc Carthy\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/)
         profileImageCollectionView.cells["profile image cell at 3"].tap()
+        let _ = waitForElementToAppear(profileInformationCollectionView/*@START_MENU_TOKEN@*/.staticTexts["Carlos Slattery"]/*[[".cells[\"profile information cell at 3\"].staticTexts[\"Carlos Slattery\"]",".staticTexts[\"Carlos Slattery\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/)
         profileImageCollectionView.cells["profile image cell at 4"].tap()
+        let _ = waitForElementToAppear(profileInformationCollectionView/*@START_MENU_TOKEN@*/.staticTexts["Carole Poland"]/*[[".cells[\"profile information cell at 4\"].staticTexts[\"Carole Poland\"]",".staticTexts[\"Carole Poland\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/)
         
         profileImageCollectionView.swipeLeft()
         profileImageCollectionView.swipeLeft()

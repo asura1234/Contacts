@@ -192,7 +192,7 @@ extension ContactsViewController: UICollectionViewDelegate {
         }
         
         // to verify the two collection views are scrolling in sync
-        //assert(checkSynchronization(), "Scrolling are not synchronized between the two collection views.")
+        assert(checkSynchronization(), "Scrolling are not synchronized between the two collection views.")
         
         // update the selection in the profile image collection view based on
         // which item is currently in the center of the profile information collection view
