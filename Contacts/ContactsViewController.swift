@@ -138,7 +138,15 @@ extension ContactsViewController: UICollectionViewDelegate {
         let infoOffSetPercentage = (profileInformationCollectionView.contentOffset.y / profileInformationLayout.itemSize.height * 10).rounded() / 10
         let isInteger2 = floor(infoOffSetPercentage) == infoOffSetPercentage
         
-        return imageOffsetPercentage == infoOffSetPercentage && isInteger1 && isInteger2
+        let result = imageOffsetPercentage == infoOffSetPercentage && isInteger1 && isInteger2
+        
+        if !result {
+            print("Profile Image View Content Offset")
+            print("x: \(profileImagecollectionView.contentOffset.x), percentage: \((profileImagecollectionView.contentOffset.x / (profileImageLayout.itemSize.width + profileImageLayout.minimumLineSpacing) * 10).rounded() / 10)")
+            print("Profile Information View Content Offset")
+            print("x: \(profileInformationCollectionView.contentOffset.y), percentage: \((profileInformationCollectionView.contentOffset.y / profileInformationLayout.itemSize.height * 10).rounded() / 10)")
+        }
+        return result
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -147,8 +155,6 @@ extension ContactsViewController: UICollectionViewDelegate {
         
         // to verify that the scrolling animation stop at the right place
         assert(checkScrollingAnimationStop(), "Scrolling animation did not end with the middle profile image cell centered and the profile information screen in full view. ")
-        
-        assert(checkSynchronization(), "Scrolling are not synchronized between the two collection views.")
     }
     
     func checkSynchronization() -> Bool {
