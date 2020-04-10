@@ -11,7 +11,6 @@
         <!--Home View Controller-->
         <scene sceneID="Pux-ue-hk7">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3Db-cT-1xR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="aTv-iL-cc4" customClass="HomeViewController" customModule="Contacts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xur-by-Xgs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -51,8 +50,9 @@
                         <outlet property="infoCollectionView" destination="usV-H1-Jvt" id="AeR-Sg-ce0"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Db-cT-1xR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2575.36231884058" y="-163.39285714285714"/>
+            <point key="canvasLocation" x="2706" y="-165"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uYc-0y-JDS">
@@ -70,7 +70,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t7n-dX-Oa6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1663.7681159420292" y="-163.39285714285714"/>
+            <point key="canvasLocation" x="1871" y="-173"/>
         </scene>
         <!--Image Collection View Controller-->
         <scene sceneID="qAd-oR-lue">
@@ -130,6 +130,7 @@
                             <constraint firstItem="hYA-IF-lMh" firstAttribute="leading" secondItem="0jC-3b-OXj" secondAttribute="leading" id="dLV-Rm-71B"/>
                             <constraint firstItem="hYA-IF-lMh" firstAttribute="top" secondItem="0jC-3b-OXj" secondAttribute="top" id="lpA-Qs-fj9"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="5ra-gn-Y0f"/>
                     </view>
                     <connections>
                         <outlet property="imageCollectionView" destination="rvL-Jp-W16" id="BYl-g9-eu8"/>
@@ -246,6 +247,7 @@
                             <constraint firstItem="rmi-MH-qkH" firstAttribute="top" secondItem="rDG-aW-1KS" secondAttribute="top" id="upr-lE-W1F"/>
                             <constraint firstItem="rmi-MH-qkH" firstAttribute="leading" secondItem="rDG-aW-1KS" secondAttribute="leading" id="vMv-wT-kVo"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="iFO-WF-eJ3"/>
                     </view>
                     <connections>
                         <outlet property="infoCollectionView" destination="rmi-MH-qkH" id="mJM-v8-foh"/>

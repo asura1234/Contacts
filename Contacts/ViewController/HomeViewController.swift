@@ -68,4 +68,10 @@ extension HomeViewController: SynchronizedScrollingDelegate {
             imageCollectionVC.contentOffSetRatio = contentOffsetRatio
         }
     }
+    
+    func didSelect(sender: UIViewController, selectedIndex: Int) {
+        if sender == infoCollectionVC {
+            imageCollectionVC.selectedIndex = selectedIndex
+        }
+    }
 }

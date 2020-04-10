@@ -10,7 +10,26 @@ import UIKit
 
 class ImageCollectionViewController: UIViewController {
 
-    var profiles: [Profile] = []
+    var profiles: [Profile] = [] {
+        didSet {
+            imageCollectionView.reloadData()
+            selectedIndex = 0
+            contentOffSetRatio = 0
+        }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        // for the first item and last item in the profile image collection view
+        // to be able to scroll to the center of the collection view,
+        // there needs to be padding added on either side of the content
+        shadowView.layoutSubviews()
+        imageCollectionLayout.scrollDirection = .horizontal
+        imageCollectionLayout.itemSize = CGSize(width: profileImageCellSize, height: profileImageCellSize)
+        imageCollectionLayout.minimumLineSpacing = profileImageCellSpacing
+        imageCollectionLayout.sectionInset = UIEdgeInsets(top: 0,left: padding ,bottom: 0,right: padding)
+    }
+    
     var syncScrollingDelegate: SynchronizedScrollingDelegate?
     
     @IBOutlet private weak var shadowView: ShadowView!
@@ -19,9 +38,9 @@ class ImageCollectionViewController: UIViewController {
     
     private var imageCollectionLayout =  ProfileImageCollectionLayout()
     
-    private let imageCellSize: CGFloat = 80
-    private let imageCellSpacing: CGFloat = 10
-    private lazy var padding = (imageCollectionView.frame.size.width - imageCellSize)/2
+    private let profileImageCellSize: CGFloat = 80
+    private let profileImageCellSpacing: CGFloat = 10
+    private lazy var padding = (imageCollectionView.frame.size.width - profileImageCellSize)/2
     var contentOffSetRatio: CGFloat {
         get {
             let ratio =  imageCollectionView.contentOffset.x / (imageCollectionView.contentSize.width - 2*padding + imageCollectionLayout.minimumLineSpacing)
@@ -30,6 +49,16 @@ class ImageCollectionViewController: UIViewController {
         set (ratio) {
             let x = ratio * (imageCollectionView.contentSize.width - 2*padding + imageCollectionLayout.minimumLineSpacing)
             imageCollectionView.contentOffset = CGPoint(x: CGFloat(x), y: 0)
+        }
+    }
+    
+    var selectedIndex: Int {
+        get {
+            let selectedPaths = imageCollectionView.indexPathsForSelectedItems!
+            return selectedPaths[0].item
+        }
+        set (index) {
+            imageCollectionView.selectItem(at: IndexPath(item: index, section: 0), animated: false, scrollPosition: [])
         }
     }
     
@@ -44,7 +73,7 @@ class ImageCollectionViewController: UIViewController {
         imageCollectionView.accessibilityIdentifier = "profile image collection view"
         
         // set initial selection to item 0
-        imageCollectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: [])
+        selectedIndex = 0
     }
 }
 
@@ -83,12 +112,5 @@ extension ImageCollectionViewController: UICollectionViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         syncScrollingDelegate?.didScroll(sender: self, contentOffsetRatio: self.contentOffSetRatio)
-        
-        // update the selection in the profile image collection view based on
-        // which item is currently in the center of the image collection view
-        let point = CGPoint(x: imageCollectionView.contentOffset.x, y: imageCollectionView.contentOffset.y + imageCollectionView.frame.height/2)
-        if let indexPath = imageCollectionView.indexPathForItem(at: point) {
-            imageCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
-        }
     }
 }

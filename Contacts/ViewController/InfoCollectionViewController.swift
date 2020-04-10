@@ -10,7 +10,26 @@ import UIKit
 
 class InfoCollectionViewController: UIViewController {
 
-    var profiles: [Profile] = []
+    var profiles: [Profile] = [] {
+        didSet {
+            infoCollectionView.reloadData()
+            contentOffSetRatio = 0
+        }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        // for paging to work correctly:
+        // (1) each item should take up the entire screen space avaialble
+        // (2) there can be no horizontal or verticl spacing between each item
+        // (3) there can be no inset
+        infoCollectionLayout.scrollDirection = .vertical
+        infoCollectionLayout.itemSize = infoCollectionView.frame.size
+        infoCollectionLayout.minimumLineSpacing = 0
+        infoCollectionLayout.minimumInteritemSpacing = 0
+        infoCollectionLayout.sectionInset = UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 0)
+    }
+    
     var syncScrollingDelegate: SynchronizedScrollingDelegate?
     
     @IBOutlet weak var infoCollectionView: UICollectionView!
@@ -63,5 +82,14 @@ extension InfoCollectionViewController: UICollectionViewDataSource {
 extension InfoCollectionViewController: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         syncScrollingDelegate?.didScroll(sender: self, contentOffsetRatio: self.contentOffSetRatio)
+        
+        // update the selection in the profile image collection view based on
+        // which item is currently in the center of the profile
+        let point = CGPoint(x: infoCollectionView.contentOffset.x, y: infoCollectionView.contentOffset.y + infoCollectionView.frame.height/2)
+        if let indexPath = infoCollectionView.indexPathForItem(at: point) {
+            infoCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
+            let selectedIndex = indexPath.item
+            syncScrollingDelegate?.didSelect(sender: self, selectedIndex: selectedIndex)
+        }
     }
 }

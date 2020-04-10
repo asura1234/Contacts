@@ -12,5 +12,7 @@ import UIKit
 protocol SynchronizedScrollingDelegate
 {
     func didScroll(sender: UIViewController, contentOffsetRatio: CGFloat)
+    
+    func didSelect(sender: UIViewController, selectedIndex: Int)
 }
 
