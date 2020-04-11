@@ -35,3 +35,37 @@ extension UIViewController {
         viewController.removeFromParent()
     }
 }
+
+extension UIView {
+    private func setupShadow() {
+        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        self.layer.shadowColor = UIColor.gray.cgColor
+        self.layer.shadowRadius = 2
+        self.layer.shadowOffset = CGSize(width: 0, height: 3)
+        self.layer.shadowOpacity = 0
+        self.layer.masksToBounds = false
+    }
+    
+    func fadeInShadow() {
+        setupShadow()
+        UIViewPropertyAnimator.runningPropertyAnimator(
+            withDuration: 0.5,
+            delay: 0,
+            options: [.beginFromCurrentState, .curveEaseInOut],
+            animations: {
+                self.layer.shadowOpacity = 0.2
+            }
+        )
+    }
+    
+    func fadeOutShadow() {
+        UIViewPropertyAnimator.runningPropertyAnimator(
+            withDuration: 0.5,
+            delay: 0,
+            options: [.beginFromCurrentState, .curveEaseInOut],
+            animations: {
+                self.layer.shadowOpacity = 0
+            }
+        )
+    }
+}

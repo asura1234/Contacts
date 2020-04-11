@@ -19,15 +19,7 @@ class InfoCollectionViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        // for paging to work correctly:
-        // (1) each item should take up the entire screen space avaialble
-        // (2) there can be no horizontal or verticl spacing between each item
-        // (3) there can be no inset
-        infoCollectionLayout.scrollDirection = .vertical
-        infoCollectionLayout.itemSize = infoCollectionView.frame.size
-        infoCollectionLayout.minimumLineSpacing = 0
-        infoCollectionLayout.minimumInteritemSpacing = 0
-        infoCollectionLayout.sectionInset = UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 0)
+
     }
     
     var syncScrollingDelegate: SynchronizedScrollingDelegate?
@@ -57,6 +49,16 @@ class InfoCollectionViewController: UIViewController {
         infoCollectionView.isPagingEnabled = true
         infoCollectionView.collectionViewLayout = infoCollectionLayout
         infoCollectionView.accessibilityIdentifier = "profile information collection view"
+        
+        // for paging to work correctly:
+        // (1) each item should take up the entire screen space avaialble
+        // (2) there can be no horizontal or verticl spacing between each item
+        // (3) there can be no inset
+        infoCollectionLayout.scrollDirection = .vertical
+        infoCollectionLayout.itemSize = infoCollectionView.frame.size
+        infoCollectionLayout.minimumLineSpacing = 0
+        infoCollectionLayout.minimumInteritemSpacing = 0
+        infoCollectionLayout.sectionInset = UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 0)
     }
 }
 

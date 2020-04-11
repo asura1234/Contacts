@@ -18,21 +18,7 @@ class ImageCollectionViewController: UIViewController {
         }
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        // for the first item and last item in the profile image collection view
-        // to be able to scroll to the center of the collection view,
-        // there needs to be padding added on either side of the content
-        shadowView.layoutSubviews()
-        imageCollectionLayout.scrollDirection = .horizontal
-        imageCollectionLayout.itemSize = CGSize(width: profileImageCellSize, height: profileImageCellSize)
-        imageCollectionLayout.minimumLineSpacing = profileImageCellSpacing
-        imageCollectionLayout.sectionInset = UIEdgeInsets(top: 0,left: padding ,bottom: 0,right: padding)
-    }
-    
     var syncScrollingDelegate: SynchronizedScrollingDelegate?
-    
-    @IBOutlet private weak var shadowView: ShadowView!
     
     @IBOutlet private weak var imageCollectionView: UICollectionView!
     
@@ -72,6 +58,14 @@ class ImageCollectionViewController: UIViewController {
         imageCollectionView.collectionViewLayout = imageCollectionLayout
         imageCollectionView.accessibilityIdentifier = "profile image collection view"
         
+        // for the first item and last item in the profile image collection view
+        // to be able to scroll to the center of the collection view,
+        // there needs to be padding added on either side of the content
+        imageCollectionLayout.scrollDirection = .horizontal
+        imageCollectionLayout.itemSize = CGSize(width: profileImageCellSize, height: profileImageCellSize)
+        imageCollectionLayout.minimumLineSpacing = profileImageCellSpacing
+        imageCollectionLayout.sectionInset = UIEdgeInsets(top: 0,left: padding ,bottom: 0,right: padding)
+        
         // set initial selection to item 0
         selectedIndex = 0
     }
@@ -102,12 +96,12 @@ extension ImageCollectionViewController: UICollectionViewDelegate {
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         // show the shadow under the image collection view
-        shadowView.fadeIn()
+        self.view.fadeInShadow()
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         // hide the shadow under the image collection view
-        shadowView.fadeOut()
+        self.view.fadeOutShadow()
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

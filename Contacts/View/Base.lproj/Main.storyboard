@@ -76,7 +76,7 @@
         <scene sceneID="qAd-oR-lue">
             <objects>
                 <viewController storyboardIdentifier="ImageCollectionViewController" id="Hg4-59-Hgm" customClass="ImageCollectionViewController" customModule="Contacts" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="0jC-3b-OXj" customClass="ShadowView" customModule="Contacts" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="0jC-3b-OXj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="105"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -127,7 +127,6 @@
                     </view>
                     <connections>
                         <outlet property="imageCollectionView" destination="rvL-Jp-W16" id="BYl-g9-eu8"/>
-                        <outlet property="shadowView" destination="0jC-3b-OXj" id="rkt-7m-0kk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zkT-9N-dPU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
