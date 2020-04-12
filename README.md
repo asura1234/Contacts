@@ -5,7 +5,7 @@ This iOS coding challenge is part of the interview process for the iOS engineer 
 https://github.com/outlook/jobs/blob/master/instructions/ios/ios-engineer.md 
 
 ## Implementation
-This is a single view app. The main view can be broken into two collection views (top: profile image collection view, bottom: profile information collection view). Profile image collection scrolls horizontally, and profile information collection view scrolls vertically. I followed the model view controller (MVC) design pattern in this project. The app is data driven with the data derived from the [contacts.json](contacts.json) and images from [avatars.zip](avatars.zip). I used storyboard and autolayout for building the view. In my view controller, I overriden some of the methods from UICollectionViewDataSource, UICollectionViewDelegate, and UICollectionViewLayout to achieve the desired behavior. I find this to be a balanced approach between using storyboard and code.
+This is a single view app. The main view can be broken into two collection views (top: profile image collection view, bottom: profile information collection view). Profile image collection scrolls horizontally, and profile information collection view scrolls vertically. I followed the model view controller (MVC) design pattern in this project. The app is data driven with the data derived from the [contacts.json](contacts.json) and images from [avatars.zip](avatars.zip). The UI is built without using storyboard, but instead in code using Autolayout.
 
 ## Features
 - Synchronize scrolling between the profile image collection view and profile information collection view
