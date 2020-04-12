@@ -15,7 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if CommandLine.arguments.contains("--UITest") {
             UIView.setAnimationsEnabled(false)
         }
-        
         return true
     }
 

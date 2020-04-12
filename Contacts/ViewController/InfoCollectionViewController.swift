@@ -10,12 +10,16 @@ import UIKit
 
 class InfoCollectionViewController: UIViewController {
 
-    var profiles: [Profile] = [] {
-        didSet {
-            infoCollectionView.reloadData()
-            contentOffSetRatio = 0
-        }
+    public init(with profiles: [Profile]) {
+        super.init(nibName: nil, bundle: nil)
+        self.profiles = profiles
     }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    var profiles: [Profile] = []
     
     var syncScrollingDelegate: SynchronizedScrollingDelegate?
     
@@ -44,7 +48,6 @@ class InfoCollectionViewController: UIViewController {
         flowLayout.minimumLineSpacing = 0
         flowLayout.minimumInteritemSpacing = 0
         flowLayout.sectionInset = UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 0)
-        flowLayout.itemSize = self.view.frame.size
         return flowLayout
     }()
     
@@ -76,6 +79,12 @@ class InfoCollectionViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
+        contentOffSetRatio = 0
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        infoCollectionLayout.itemSize = infoCollectionView.frame.size
     }
 }
 

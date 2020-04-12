@@ -17,20 +17,49 @@ class HomeViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var imageCollectionVIew: UIView!
-    @IBOutlet weak var infoCollectionView: UIView!
+    private lazy var imageCollectionView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private lazy var infoCollectionView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    func setupViews() {
+        view.backgroundColor = UIColor.systemBackground
+        view.addSubview(imageCollectionView)
+        view.addSubview(infoCollectionView)
+    }
+    
+    func setupConstraints() {
+        let margins = view.layoutMarginsGuide
+        NSLayoutConstraint.activate([
+            imageCollectionView.topAnchor.constraint(equalTo: margins.topAnchor),
+            imageCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            imageCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            imageCollectionView.heightAnchor.constraint(equalToConstant: 105),
+            infoCollectionView.topAnchor.constraint(equalTo: imageCollectionView.bottomAnchor, constant: 8),
+            infoCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            infoCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            infoCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
     
     private lazy var imageCollectionVC  : ImageCollectionViewController = {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        var viewController = storyboard.instantiateViewController(identifier: "ImageCollectionViewController") as! ImageCollectionViewController
-        self.add(asChildViewController: viewController, to: imageCollectionVIew)
+        var viewController = ImageCollectionViewController(with: profiles)
+        self.add(asChildViewController: viewController, to: imageCollectionView)
         viewController.syncScrollingDelegate = self
         return viewController
     }()
     
     private lazy var infoCollectionVC: InfoCollectionViewController = {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        var viewController = storyboard.instantiateViewController(identifier: "InfoCollectionViewController") as! InfoCollectionViewController
+        var viewController = InfoCollectionViewController(with: profiles)
         self.add(asChildViewController: viewController, to: infoCollectionView)
         viewController.syncScrollingDelegate = self
         return viewController
@@ -41,7 +70,8 @@ class HomeViewController: UIViewController {
         
         // set the title on the navigation bar
         navigationItem.title = "Contacts"
-        
+        setupViews()
+        setupConstraints()
         self.fetchData()
     }
     

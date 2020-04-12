@@ -10,13 +10,16 @@ import UIKit
 
 class ImageCollectionViewController: UIViewController {
 
-    var profiles: [Profile] = [] {
-        didSet {
-            imageCollectionView.reloadData()
-            selectedIndex = 0
-            contentOffSetRatio = 0
-        }
+    public init(with profiles: [Profile]) {
+        super.init(nibName: nil, bundle: nil)
+        self.profiles = profiles
     }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    var profiles: [Profile] = []
     
     var syncScrollingDelegate: SynchronizedScrollingDelegate?
     
@@ -90,6 +93,7 @@ class ImageCollectionViewController: UIViewController {
         setupConstraints()
         // set initial selection to item 0
         selectedIndex = 0
+        contentOffSetRatio = 0
     }
     
     override func viewDidLayoutSubviews() {

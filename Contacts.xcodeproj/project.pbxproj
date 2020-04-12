@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		8A34BFED23BF96B5006B560E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A34BFEC23BF96B5006B560E /* AppDelegate.swift */; };
 		8A34BFEF23BF96B5006B560E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A34BFEE23BF96B5006B560E /* SceneDelegate.swift */; };
-		8A34BFF423BF96B5006B560E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A34BFF223BF96B5006B560E /* Main.storyboard */; };
 		8A34BFF623BF96B7006B560E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A34BFF523BF96B7006B560E /* Assets.xcassets */; };
 		8A34BFF923BF96B7006B560E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A34BFF723BF96B7006B560E /* LaunchScreen.storyboard */; };
 		8A438A892440DD2E00B65BB1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A438A882440DD2E00B65BB1 /* HomeViewController.swift */; };
@@ -18,6 +17,7 @@
 		8A438A902440E93400B65BB1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A438A8F2440E93400B65BB1 /* Extensions.swift */; };
 		8A438A932440ECB300B65BB1 /* SynchronizedScrollingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A438A922440ECB300B65BB1 /* SynchronizedScrollingDelegate.swift */; };
 		8A438A95244102EF00B65BB1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A438A94244102EF00B65BB1 /* Default-568h@2x.png */; };
+		8A52794A2443D6AD00E13ABA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A5279492443D6AD00E13ABA /* Main.storyboard */; };
 		8AA62C7023C0D9000040E8A5 /* Mauricio August@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AA62C1B23C0D9000040E8A5 /* Mauricio August@2x.png */; };
 		8AA62C7123C0D9000040E8A5 /* Ashley Mc Carthy.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AA62C1C23C0D9000040E8A5 /* Ashley Mc Carthy.png */; };
 		8AA62C7223C0D9000040E8A5 /* Henry Brill.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AA62C1D23C0D9000040E8A5 /* Henry Brill.png */; };
@@ -135,7 +135,6 @@
 		8A34BFE923BF96B5006B560E /* Contacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Contacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A34BFEC23BF96B5006B560E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A34BFEE23BF96B5006B560E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8A34BFF323BF96B5006B560E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8A34BFF523BF96B7006B560E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A34BFF823BF96B7006B560E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A34BFFA23BF96B7006B560E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -145,6 +144,8 @@
 		8A438A8F2440E93400B65BB1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8A438A922440ECB300B65BB1 /* SynchronizedScrollingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronizedScrollingDelegate.swift; sourceTree = "<group>"; };
 		8A438A94244102EF00B65BB1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		8A5279492443D6AD00E13ABA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "../../../../../Library/Mobile Documents/com~apple~CloudDocs/.Trash/Main.storyboard"; sourceTree = "<group>"; };
+		8A52794C2443DCC800E13ABA /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		8AA62C1B23C0D9000040E8A5 /* Mauricio August@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Mauricio August@2x.png"; sourceTree = "<group>"; };
 		8AA62C1C23C0D9000040E8A5 /* Ashley Mc Carthy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ashley Mc Carthy.png"; sourceTree = "<group>"; };
 		8AA62C1D23C0D9000040E8A5 /* Henry Brill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Henry Brill.png"; sourceTree = "<group>"; };
@@ -280,7 +281,7 @@
 		8A330E1024135B8E00E092A7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8A34BFF223BF96B5006B560E /* Main.storyboard */,
+				8A5279492443D6AD00E13ABA /* Main.storyboard */,
 				8AA62CCB23C24B300040E8A5 /* ProfileImageCollectionLayout.swift */,
 				8AB2683223BFF8B000D94AE4 /* ProfileImageCell.swift */,
 				8AA62CC523C0F5E00040E8A5 /* ProfileInfoCell.swift */,
@@ -335,6 +336,7 @@
 		8A34C00023BF9722006B560E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8A52794C2443DCC800E13ABA /* Main.storyboard */,
 				8A34BFFA23BF96B7006B560E /* Info.plist */,
 				8A34BFEC23BF96B5006B560E /* AppDelegate.swift */,
 				8A34BFEE23BF96B5006B560E /* SceneDelegate.swift */,
@@ -584,6 +586,7 @@
 				8AA62C8323C0D9000040E8A5 /* Mauricio August@3x.png in Resources */,
 				8AA62CB423C0D9000040E8A5 /* Miguel Garcia@2x.png in Resources */,
 				8AA62CA323C0D9000040E8A5 /* Elliot Woodward@2x.png in Resources */,
+				8A52794A2443D6AD00E13ABA /* Main.storyboard in Resources */,
 				8AA62C8023C0D9000040E8A5 /* Robert Tolbert@3x.png in Resources */,
 				8AA62CBF23C0D9000040E8A5 /* Colin Ballinger.png in Resources */,
 				8AA62C8823C0D9000040E8A5 /* Katri Ahokas@3x.png in Resources */,
@@ -663,7 +666,6 @@
 				8AA62CBD23C0D9000040E8A5 /* Robin Counts@3x.png in Resources */,
 				8AA62CBB23C0D9000040E8A5 /* Allan Munger.png in Resources */,
 				8AA62C9323C0D9000040E8A5 /* Ashley Mc Carthy@2x.png in Resources */,
-				8A34BFF423BF96B5006B560E /* Main.storyboard in Resources */,
 				8AA62C7123C0D9000040E8A5 /* Ashley Mc Carthy.png in Resources */,
 				8AA62C9723C0D9000040E8A5 /* Mona Kane@2x.png in Resources */,
 				8AA62C9D23C0D9000040E8A5 /* Carole Poland@3x.png in Resources */,
@@ -739,14 +741,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		8A34BFF223BF96B5006B560E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8A34BFF323BF96B5006B560E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8A34BFF723BF96B7006B560E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
