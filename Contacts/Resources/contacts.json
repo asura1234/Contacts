@@ -1,5 +1,12 @@
 [
   {
+      "first_name": "Dylan",
+      "last_name": "Liu",
+      "avatar_filename": "Dylan Liu.png",
+      "title": "iOS Developer",
+      "introduction": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eu placerat turpis, ac aliquam enim. Donec mauris quam, fermentum id eros vel, luctus bibendum sapien. In id faucibus neque, quis lacinia risus. Curabitur hendrerit nisi non risus posuere, eu bibendum velit venenatis. Mauris mattis malesuada tellus. Sed a lacus ex. Sed ut leo ac magna molestie malesuada. Maecenas ac eleifend metus, sit amet eleifend mauris. Donec at sem non nulla posuere gravida sed in metus."
+  },
+  {
     "first_name": "Allan",
     "last_name": "Munger",
     "avatar_filename": "Allan Munger.png",

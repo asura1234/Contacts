@@ -20,13 +20,36 @@ class ImageCollectionViewController: UIViewController {
     
     var syncScrollingDelegate: SynchronizedScrollingDelegate?
     
-    @IBOutlet private weak var imageCollectionView: UICollectionView!
-    
-    private var imageCollectionLayout =  ProfileImageCollectionLayout()
+    private lazy var imageCollectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: self.imageCollectionLayout)
+        // setup profile image collection view
+        collectionView.backgroundColor = UIColor.systemBackground
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.isPagingEnabled = false
+        collectionView.register(ProfileImageCell.self, forCellWithReuseIdentifier: "ProfileImageCell")
+        collectionView.accessibilityIdentifier = "profile image collection view"
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        return collectionView
+    }()
     
     private let profileImageCellSize: CGFloat = 80
     private let profileImageCellSpacing: CGFloat = 10
-    private lazy var padding = (imageCollectionView.frame.size.width - profileImageCellSize)/2
+    private lazy var padding = (self.view.frame.size.width - profileImageCellSize)/2
+    
+    private lazy var imageCollectionLayout: ProfileImageCollectionLayout =  {
+        let collectionLayout = ProfileImageCollectionLayout()
+        // for the first item and last item in the profile image collection view
+        // to be able to scroll to the center of the collection view,
+        // there needs to be padding added on either side of the content
+        collectionLayout.scrollDirection = .horizontal
+        collectionLayout.itemSize = CGSize(width: profileImageCellSize, height: profileImageCellSize)
+        collectionLayout.minimumLineSpacing = profileImageCellSpacing
+        collectionLayout.sectionInset = UIEdgeInsets(top: 0,left: padding ,bottom: 0,right: padding)
+        return collectionLayout
+    }()
+    
     var contentOffSetRatio: CGFloat {
         get {
             let ratio =  imageCollectionView.contentOffset.x / (imageCollectionView.contentSize.width - 2*padding + imageCollectionLayout.minimumLineSpacing)
@@ -48,26 +71,29 @@ class ImageCollectionViewController: UIViewController {
         }
     }
     
+    private func setupViews() {
+        view.addSubview(imageCollectionView)
+    }
+    
+    private func setupConstraints() {
+        NSLayoutConstraint.activate([
+            imageCollectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            imageCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            imageCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            imageCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // setup profile image collection view
-        imageCollectionView.delegate = self
-        imageCollectionView.dataSource = self
-        imageCollectionView.isPagingEnabled = false
-        imageCollectionView.collectionViewLayout = imageCollectionLayout
-        imageCollectionView.accessibilityIdentifier = "profile image collection view"
-        
-        // for the first item and last item in the profile image collection view
-        // to be able to scroll to the center of the collection view,
-        // there needs to be padding added on either side of the content
-        imageCollectionLayout.scrollDirection = .horizontal
-        imageCollectionLayout.itemSize = CGSize(width: profileImageCellSize, height: profileImageCellSize)
-        imageCollectionLayout.minimumLineSpacing = profileImageCellSpacing
-        imageCollectionLayout.sectionInset = UIEdgeInsets(top: 0,left: padding ,bottom: 0,right: padding)
-        
+        setupViews()
+        setupConstraints()
         // set initial selection to item 0
         selectedIndex = 0
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
     }
 }
 

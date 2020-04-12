@@ -107,6 +107,8 @@
 		8AA62CCC23C24B300040E8A5 /* ProfileImageCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA62CCB23C24B300040E8A5 /* ProfileImageCollectionLayout.swift */; };
 		8AB2682D23BFA07000D94AE4 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB2682C23BFA07000D94AE4 /* Profile.swift */; };
 		8AB2683323BFF8B000D94AE4 /* ProfileImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB2683223BFF8B000D94AE4 /* ProfileImageCell.swift */; };
+		8AC2700C24423BD000A7B8F1 /* Dylan Liu.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AC2700A24423BD000A7B8F1 /* Dylan Liu.png */; };
+		8AC2700D24423BD000A7B8F1 /* Dylan Liu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AC2700B24423BD000A7B8F1 /* Dylan Liu@2x.png */; };
 		8AFF20A923FF1310006A81EE /* JsonParsingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFF20A823FF1310006A81EE /* JsonParsingTest.swift */; };
 		8AFF20B023FF1320006A81EE /* contacts.json in Resources */ = {isa = PBXBuildFile; fileRef = 8AA62C6C23C0D9000040E8A5 /* contacts.json */; };
 		8AFF20B823FF2A58006A81EE /* ContactsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFF20B723FF2A58006A81EE /* ContactsUITests.swift */; };
@@ -232,6 +234,8 @@
 		8AA62CCB23C24B300040E8A5 /* ProfileImageCollectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageCollectionLayout.swift; sourceTree = "<group>"; };
 		8AB2682C23BFA07000D94AE4 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Profile.swift; path = Contacts/Model/Profile.swift; sourceTree = SOURCE_ROOT; };
 		8AB2683223BFF8B000D94AE4 /* ProfileImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageCell.swift; sourceTree = "<group>"; };
+		8AC2700A24423BD000A7B8F1 /* Dylan Liu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Dylan Liu.png"; path = "../../../../../Desktop/Dylan Liu.png"; sourceTree = "<group>"; };
+		8AC2700B24423BD000A7B8F1 /* Dylan Liu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Dylan Liu@2x.png"; path = "../../../../../Desktop/Dylan Liu@2x.png"; sourceTree = "<group>"; };
 		8AFF20A623FF1310006A81EE /* JsonParsingTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JsonParsingTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AFF20A823FF1310006A81EE /* JsonParsingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonParsingTest.swift; sourceTree = "<group>"; };
 		8AFF20AA23FF1310006A81EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -359,6 +363,8 @@
 		8AA62C1A23C0D9000040E8A5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8AC2700A24423BD000A7B8F1 /* Dylan Liu.png */,
+				8AC2700B24423BD000A7B8F1 /* Dylan Liu@2x.png */,
 				8A438A94244102EF00B65BB1 /* Default-568h@2x.png */,
 				8AA62C6C23C0D9000040E8A5 /* contacts.json */,
 				8AA62C1B23C0D9000040E8A5 /* Mauricio August@2x.png */,
@@ -583,6 +589,7 @@
 				8AA62C8823C0D9000040E8A5 /* Katri Ahokas@3x.png in Resources */,
 				8AA62C7923C0D9000040E8A5 /* Robert Tolbert.png in Resources */,
 				8AA62C7E23C0D9000040E8A5 /* Kevin Sturgis.png in Resources */,
+				8AC2700D24423BD000A7B8F1 /* Dylan Liu@2x.png in Resources */,
 				8AA62CC323C0D9000040E8A5 /* Robin Counts.png in Resources */,
 				8AA62CAA23C0D9000040E8A5 /* Colin Ballinger@2x.png in Resources */,
 				8AA62C8A23C0D9000040E8A5 /* Miguel Garcia.png in Resources */,
@@ -627,6 +634,7 @@
 				8AA62CC123C0D9000040E8A5 /* contacts.json in Resources */,
 				8AA62C7523C0D9000040E8A5 /* Henry Brill@3x.png in Resources */,
 				8AA62C7A23C0D9000040E8A5 /* Amanda Brady.png in Resources */,
+				8AC2700C24423BD000A7B8F1 /* Dylan Liu.png in Resources */,
 				8AA62CA923C0D9000040E8A5 /* Wanda Howard.png in Resources */,
 				8AA62CBC23C0D9000040E8A5 /* Charlotte Waltson@2x.png in Resources */,
 				8AA62C9C23C0D9000040E8A5 /* Carlos Slattery@2x.png in Resources */,

@@ -68,4 +68,20 @@ extension UIView {
             }
         )
     }
+    
+    func clipToCircle() {
+        self.clipsToBounds = true
+        self.layer.masksToBounds = true
+        self.layer.cornerRadius = self.frame.height/2
+    }
+}
+
+extension UIColor {
+    // generate a UIImage with solid color
+    func image(_ size: CGSize = CGSize(width: 85, height: 85)) -> UIImage {
+        return UIGraphicsImageRenderer(size: size).image { renderContext in
+            self.setFill()
+            renderContext.fill(CGRect(origin: .zero, size: size))
+        }
+    }
 }

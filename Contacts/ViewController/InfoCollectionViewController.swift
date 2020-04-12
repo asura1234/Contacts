@@ -17,16 +17,36 @@ class InfoCollectionViewController: UIViewController {
         }
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-
-    }
-    
     var syncScrollingDelegate: SynchronizedScrollingDelegate?
     
-    @IBOutlet weak var infoCollectionView: UICollectionView!
+    private lazy var infoCollectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: infoCollectionLayout)
+        // setup profile information collection view
+        collectionView.backgroundColor = UIColor.systemBackground
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.allowsSelection = false
+        collectionView.isPagingEnabled = true
+        collectionView.register(ProfileInfoCell.self, forCellWithReuseIdentifier: "ProfileInfoCell")
+        collectionView.accessibilityIdentifier = "profile information collection view"
+       collectionView.translatesAutoresizingMaskIntoConstraints = false
+        return collectionView
+    }()
     
-    private var infoCollectionLayout = UICollectionViewFlowLayout()
+    private lazy var infoCollectionLayout: UICollectionViewFlowLayout = {
+        let flowLayout = UICollectionViewFlowLayout()
+        // for paging to work correctly:
+        // (1) each item should take up the entire screen space avaialble
+        // (2) there can be no horizontal or verticl spacing between each item
+        // (3) there can be no inset
+        flowLayout.scrollDirection = .vertical
+        flowLayout.minimumLineSpacing = 0
+        flowLayout.minimumInteritemSpacing = 0
+        flowLayout.sectionInset = UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 0)
+        flowLayout.itemSize = self.view.frame.size
+        return flowLayout
+    }()
     
     var contentOffSetRatio: CGFloat {
         get {
@@ -39,26 +59,23 @@ class InfoCollectionViewController: UIViewController {
         }
     }
     
+    private func setupViews() {
+        view.addSubview(infoCollectionView)
+    }
+    
+    private func setupConstraints() {
+        NSLayoutConstraint.activate([
+            infoCollectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            infoCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            infoCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            infoCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // setup profile information collection view
-        infoCollectionView.delegate = self
-        infoCollectionView.dataSource = self
-        infoCollectionView.allowsSelection = false
-        infoCollectionView.isPagingEnabled = true
-        infoCollectionView.collectionViewLayout = infoCollectionLayout
-        infoCollectionView.accessibilityIdentifier = "profile information collection view"
-        
-        // for paging to work correctly:
-        // (1) each item should take up the entire screen space avaialble
-        // (2) there can be no horizontal or verticl spacing between each item
-        // (3) there can be no inset
-        infoCollectionLayout.scrollDirection = .vertical
-        infoCollectionLayout.itemSize = infoCollectionView.frame.size
-        infoCollectionLayout.minimumLineSpacing = 0
-        infoCollectionLayout.minimumInteritemSpacing = 0
-        infoCollectionLayout.sectionInset = UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 0)
+        setupViews()
+        setupConstraints()
     }
 }
 
@@ -69,7 +86,7 @@ extension InfoCollectionViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let profile = profiles[indexPath.item]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileInformationCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileInfoCell", for: indexPath)
         
         if let profileInformationCell = cell as?
             ProfileInfoCell {

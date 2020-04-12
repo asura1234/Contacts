@@ -9,10 +9,55 @@
 import UIKit
 
 class ProfileInfoCell: UICollectionViewCell {
-    @IBOutlet private weak var nameLabel: UILabel!
-    @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var aboutMeLabel: UILabel!
-    @IBOutlet private weak var introductionLabel: UILabel!
+    private lazy var nameLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.numberOfLines = 1
+        return label
+    }()
+    
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.numberOfLines = 1
+        label.textColor = UIColor.lightGray
+        label.font = UIFont.preferredFont(forTextStyle: .body)
+        return label
+    }()
+    private lazy var aboutMeLabel: UILabel = {
+        let label = UILabel()
+        label.text = "About me"
+        label.textAlignment = .left
+        label.numberOfLines = 1
+        label.font = UIFont.preferredFont(forTextStyle: .headline)
+        return label
+    }()
+    
+    private lazy var introductionLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.font = UIFont.preferredFont(forTextStyle: .body)
+        label.textColor = UIColor.lightGray
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.autoresizingMask = .flexibleHeight
+        return label
+    }()
+    
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [
+            nameLabel,
+            titleLabel,
+            aboutMeLabel,
+            introductionLabel
+        ])
+        stackView.spacing = 8
+        stackView.alignment = .fill
+        stackView.axis = .vertical
+        stackView.distribution = .equalSpacing
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
     
     var profile: Profile? {
         didSet {
@@ -22,6 +67,29 @@ class ProfileInfoCell: UICollectionViewCell {
                 introductionLabel.text = profile.information
             }
         }
+    }
+    
+    private override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupViews()
+        setupConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupViews() {
+        contentView.addSubview(stackView)
+    }
+    
+    private func setupConstraints() {
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            stackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -20),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20)
+        ])
     }
     
     private var fullName: NSMutableAttributedString {
